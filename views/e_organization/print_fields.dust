@@ -1,0 +1,13 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_organization.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_organization.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+</div>

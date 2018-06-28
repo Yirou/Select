@@ -1,0 +1,15 @@
+[
+    {
+        "target": "e_user",
+        "relation": "belongsToMany",
+        "foreignKey": "fk_id_e_power",
+        "as": "r_users",
+        "showAs": "Users",
+        "through": "9_e_power_e_user",
+        "otherKey": "fk_id_e_user",
+        "structureType": "hasManyPreset",
+        "usingField": [
+            "f_f_login"
+        ]
+    }
+]

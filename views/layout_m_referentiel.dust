@@ -1,0 +1,166 @@
+{>"main_layout"/}
+
+{<custom_css}
+{! Admin LTE Layout !}
+<link href="/css/AdminLteV2/layouts/layout-default.css" rel="stylesheet" type="text/css" data-type="layout" data-layout="default"> {+custom_css_2 /}
+{/custom_css}
+
+{<modules}
+<select id="dynamic_select" data-width="100%" class="form-control select" onchange="navigate()">
+    {@moduleAccess module="home"}
+    <option data-module="m_home" value="/default/home">
+        {@__ key="module.m_home" /}
+    </option>
+    {/moduleAccess}
+    {@moduleAccess module="administration"}
+    <option data-module="m_administration" value="/default/administration">
+        {@__ key="module.m_administration" /}
+    </option>
+    {/moduleAccess}
+    {@moduleAccess module="referentiel"}
+    <option data-module="m_referentiel" value="/default/referentiel" selected="">
+        {@__ key="module.m_referentiel" /}
+    </option>
+    {/moduleAccess}
+</select>
+{/modules}
+
+{<sidebar}
+<ul id="sortable" class="sidebar-menu" style="white-space: pre-wrap;">
+    {@entityAccess entity="organization"}
+    <li id="organization_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_organization.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="organization" action="create"}
+            <li>
+                <a href="/organization/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="organization" action="read"}
+            <li>
+                <a href="/organization/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="service"}
+    <li id="service_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_service.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="service" action="create"}
+            <li>
+                <a href="/service/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="service" action="read"}
+            <li>
+                <a href="/service/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="activity"}
+    <li id="activity_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_activity.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="activity" action="create"}
+            <li>
+                <a href="/activity/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="read"}
+            <li>
+                <a href="/activity/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="power"}
+    <li id="power_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_power.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="power" action="create"}
+            <li>
+                <a href="/power/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="power" action="read"}
+            <li>
+                <a href="/power/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+    {@entityAccess entity="entry"}
+    <li id="entry_menu_item" style="display:none;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_entry.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="entry" action="create"}
+            <li>
+                <a href="/entry/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="entry" action="read"}
+            <li>
+                <a href="/entry/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
+</ul>
+{/sidebar}

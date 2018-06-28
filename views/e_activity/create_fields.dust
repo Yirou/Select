@@ -1,0 +1,138 @@
+<div id="fields" class="row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name" class="required">
+                {@__ key="entity.e_activity.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_name" /}' name="f_name" value="" type="text" maxlength="255" required="">
+        </div>
+    </div>
+    <div data-field="f_enabled" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_enabled">
+                {@__ key="entity.e_activity.f_enabled"/}&nbsp;
+                {@inline_help field="f_enabled"}
+                <i data-field="f_enabled" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            <input class="form-control input" name="f_enabled" type="checkbox">
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization" class="required">
+                {@__ key="entity.e_activity.r_organization" /}&nbsp;
+                {@inline_help field="r_organization"}
+                <i data-field="r_organization" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select style="width:100%;" class="ajax form-control" name="r_organization" data-source="organization" data-using="f_name" required="">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_organization}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_organization}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_picture" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_picture">
+                {@__ key="entity.e_activity.f_picture"/}&nbsp;
+                {@inline_help field="f_picture"}
+                <i data-field="f_picture" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="dropzone dropzone-field" id="f_picture_dropzone" data-storage="local" data-type="picture" data-entity="e_activity"></div>
+            <input type="hidden" name="f_picture" id="f_picture_dropzone_hidden" value="{.value}" data-buffer="{.buffer}">
+        </div>
+    </div>
+    <div data-field="f_every" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_every">
+                {@__ key="entity.e_activity.f_every"/}&nbsp;
+                {@inline_help field="f_every"}
+                <i data-field="f_every" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_every" /}' name="f_every" value="" type="number" max="2147483648">
+        </div>
+    </div>
+
+    <div data-field="f_frequence" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_frequence">
+                {@__ key="entity.e_activity.f_frequence"/}&nbsp;
+                {@inline_help field="f_frequence"}
+                <i data-field="f_frequence" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select style="width:100%;" class="form-control select" name="f_frequence">
+                <option value="" selected="">
+                    {@__ key="select.default" /}
+                </option>
+                {#enum_radio.e_activity.f_frequence}
+                <option value="{.value}"> {.translation} </option>
+                {/enum_radio.e_activity.f_frequence}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_start_date" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_date" class="required">
+                {@__ key="entity.e_activity.f_start_date"/}&nbsp;
+                {@inline_help field="f_start_date"}
+                <i data-field="f_start_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control input datepicker datepicker-toconvert" placeholder='{@__ key="entity.e_activity.f_start_date" /}' name="f_start_date" type="text" required="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_start_time" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_time">
+                {@__ key="entity.e_activity.f_start_time"/}&nbsp;
+                {@inline_help field="f_start_time"}
+                <i data-field="f_start_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="bootstrap-timepicker">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <input class="form-control input timepicker" placeholder='{@__ key="entity.e_activity.f_start_time" /}' name="f_start_time" value="" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-field="f_end_time" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_end_time">
+                {@__ key="entity.e_activity.f_end_time"/}&nbsp;
+                {@inline_help field="f_end_time"}
+                <i data-field="f_end_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="bootstrap-timepicker">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <input class="form-control input timepicker" placeholder='{@__ key="entity.e_activity.f_end_time" /}' name="f_end_time" value="" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

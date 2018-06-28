@@ -1,0 +1,90 @@
+{>"layout_m_administration"/}
+{<header}
+<h1>
+    {@__ key="module.m_administration"/}
+    <small>
+        {@__ key="module.module"/}
+    </small>
+</h1>
+<ol class="breadcrumb">
+    <li>
+        <a href="/">
+            <i class="fa fa-home"></i>
+            {@__ key="module.home"/}
+        </a>
+    </li>
+    <li class="active">
+        {@__ key="module.m_administration"/}
+    </li>
+</ol>
+{/header}
+
+{<content}
+<div id="widgets" class="row">
+    <table>
+
+    </table>
+    <div id="stats_e_user_widget" class="col-sm-3 col-xs-12">
+        {@entityAccess entity="user" }
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>{e_user_stats}</h3>
+
+                <p>
+                    {@__ key="entity.e_user.label_entity" /}
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user user-icon"></i>
+            </div>
+            <a href="/user/list" class="small-box-footer">
+                {@__ key="defaults.widgets.stats.more_info" /}&nbsp;
+                <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+        {/entityAccess}
+    </div>
+</div>
+{/content}
+
+{<custom_js}
+<script type="text/javascript">
+    $(function() {
+        $(".widget-row").click(function() {
+            window.location = $(this).data('href');
+        });
+
+        $("table td").each(function() {
+            var self = this;
+            var type = $(self).data('type');
+            var cellValue = $(self).html();
+
+            if (type == 'color')
+                cellValue = '<i style="color:' + cellValue + '" class="fa fa-lg fa-circle"></i>';
+            else if (type == 'currency')
+                cellValue = '<span data-type="currency">' + cellValue + '</span>';
+            else if (type == 'email' && (cellValue != null && cellValue != ''))
+                cellValue = '<a href="mailto:' + cellValue + '">' + cellValue + '</a>';
+            else if (type == 'tel' && (cellValue != null && cellValue != ''))
+                cellValue = '<a href="tel:' + cellValue + '">' + cellValue + '</a>';
+            else if (type == 'picture') {
+                $(self).html('');
+                $.ajax({
+                    url: '/default/get_file?entity=' + $(self).parents('table').data('entity') + '&src=' + cellValue,
+                    success: function(data) {
+                        if (data != null && data.data != '') {
+                            console.log(data);
+                            $(self).html('<img src=data:image/;base64,' + data.data + ' />');
+                        } else {
+                            $(self).html('');
+                        }
+                    }
+                });
+                return;
+            }
+
+            $(self).html(cellValue);
+        });
+    });
+</script>
+{/custom_js}

@@ -1,0 +1,198 @@
+<div class="nav-tabs-custom" id="tabs">
+    {^hideTab}
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#home">
+                {@__ key="entity.e_activity.label_entity" /}
+            </a>
+        </li>
+        {@entityAccess entity="entry"}
+        <li>
+            <a id="r_entry-click" data-toggle="tab" data-tabtype="hasMany" href="#r_entry">
+                {@__ key="entity.e_entry.as_r_entry" /}
+            </a>
+        </li>
+        {/entityAccess}
+    </ul>
+    {/hideTab}
+    <div class="tab-content" style="min-height:275px;">
+        <div id="home" class="tab-pane fade in active">
+            <div id="fields" class="row">
+                <div data-field="f_name" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_name">
+                            {@__ key="entity.e_activity.f_name"/}&nbsp;
+                            {@inline_help field="f_name"}
+                            <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_enabled" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_enabled">
+                            {@__ key="entity.e_activity.f_enabled"/}&nbsp;
+                            {@inline_help field="f_enabled"}
+                            <i data-field="f_enabled" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        &nbsp;
+                        <br>
+                        {@ifTrue key=f_enabled}
+                        <input class="form-control input" name="f_enabled" value="{f_enabled}" type="checkbox" checked="" disabled="">
+                        {:else}
+                        <input class="form-control input" name="f_enabled" value="{f_enabled}" type="checkbox" disabled="">
+                        {/ifTrue}
+                    </div>
+                </div>
+                <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="r_organization">
+                            {@__ key="entity.e_activity.r_organization"/}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_picture" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_picture">
+                            {@__ key="entity.e_activity.f_picture"/}&nbsp;
+                            {@inline_help field="f_picture"}
+                            <i data-field="f_picture" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="input-group">
+                            <a href="/default/download?entity=e_activity&amp;f={f_picture.value}">
+                                <img src="data:image/;base64,{f_picture.buffer}" class="img img-responsive" data-type="picture" alt="{f_picture}" name="f_picture" readonly="" height="400" width="400">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div data-field="f_every" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_every">
+                            {@__ key="entity.e_activity.f_every"/}&nbsp;
+                            {@inline_help field="f_every"}
+                            <i data-field="f_every" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_every" /}' name="f_every" value="{f_every}" type="number" max="2147483648" readonly="">
+                    </div>
+                </div>
+
+                <div data-field="f_frequence" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_frequence">
+                            {@__ key="entity.e_activity.f_frequence"/}&nbsp;
+                            {@inline_help field="f_frequence"}
+                            <i data-field="f_frequence" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        {^f_frequence}
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_frequence" /}' name="f_frequence" type="text" readonly="">
+                        {/f_frequence}
+                        {#enum_radio.e_activity.f_frequence}
+                        {@eq key=f_frequence value="{.value}" }
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_frequence" /}' name="f_frequence" value="{.translation}" type="text" readonly="">
+                        {/eq}
+                        {/enum_radio.e_activity.f_frequence}
+                    </div>
+                </div>
+                <div data-field="f_start_date" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_start_date">
+                            {@__ key="entity.e_activity.f_start_date"/}&nbsp;
+                            {@inline_help field="f_start_date"}
+                            <i data-field="f_start_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input class="form-control input datepicker-toconvert" placeholder='{@__ key="entity.e_activity.f_start_date" /}' value="{f_start_date}" type="text" readonly="">
+                        </div>
+                    </div>
+                </div>
+                <div data-field="f_start_time" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_start_time">
+                            {@__ key="entity.e_activity.f_start_time"/}&nbsp;
+                            {@inline_help field="f_start_time"}
+                            <i data-field="f_start_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="bootstrap-timepicker">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_start_time" /}' value="{f_start_time|time}" type="text" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-field="f_end_time" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_end_time">
+                            {@__ key="entity.e_activity.f_end_time"/}&nbsp;
+                            {@inline_help field="f_end_time"}
+                            <i data-field="f_end_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="bootstrap-timepicker">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_end_time" /}' value="{f_end_time|time}" type="text" readonly="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <form action="/activity/delete" method="post">
+                    <div class="quicklinks">
+                        <a class="btn btn-default" href="javascript:history.back();">
+                            <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;
+                            {@__ key="button.return"/}
+                        </a>
+                        {@actionAccess entity="activity" action="delete"}
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                            <span>{@__ key="button.delete"/}</span>
+                        </button>
+                        <input name="id" type="hidden" value="{e_activity.id}" class="form-control">
+                        {/actionAccess}
+                        {@actionAccess entity="activity" action="update"}
+                        <a href="/activity/update_form?id={e_activity.id}" class="btn btn-warning">
+                            <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {^hideButton}
+                        {@actionAccess entity="activity" action="create"}
+                        <a href="/activity/create_form" class="btn btn-success">
+                            <i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.create"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {@actionAccess entity="activity" action="read"}
+                        <a href="/activity/list" type="submit" class="btn btn-primary">
+                            <i class="fa fa-list fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.list"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {/hideButton}
+                    </div>
+                </form>
+            </div>
+        </div>
+        {^hideTab}
+        {@entityAccess entity="entry"}
+        <div id="r_entry" class="ajax-tab tab-pane fade" data-tabtype="hasMany" data-asso-alias="r_entry" data-asso-foreignkey="fk_id_activity" data-asso-flag="{id}" data-asso-source="e_activity" data-asso-url="activity">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+    </div>
+</div>

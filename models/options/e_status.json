@@ -1,0 +1,26 @@
+[
+    {
+        "target": "e_translation",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_status_translations",
+        "as": "r_translations",
+        "showAs": "Translations",
+        "structureType": "hasMany"
+    },
+    {
+        "target": "e_action",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_status_actions",
+        "as": "r_actions",
+        "showAs": "Actions",
+        "structureType": "hasMany"
+    },
+    {
+        "relation": "belongsToMany",
+        "target": "e_status",
+        "through": "9_status_children",
+        "foreignKey": "fk_id_parent_status",
+        "otherKey": "fk_id_child_status",
+        "as": "r_children"
+    }
+]

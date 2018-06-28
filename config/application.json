@@ -1,0 +1,10 @@
+{
+	"version": 0,
+	"api_enabled": true,
+	"socket": {
+		"enabled": true,
+		"chat": false,
+		"notification": true
+	},
+	"maintenance": false
+}

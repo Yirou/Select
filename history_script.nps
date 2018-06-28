@@ -1,0 +1,52 @@
+
+add module Referentiel
+add entity Organization
+add field Name
+add entity Service
+add field Name
+add field Creation date with type date
+add field Organization related to Organization using Name
+set field Name required
+set field Creation date required
+set field Organization required
+add entity Activity
+add field Name
+add field Enabled with type boolean
+add field Organization related to Organization using Name
+add field Picture with type Picture
+set field Name required
+set field Organization required
+add entity Power
+add field Label
+add field Point with type float
+//ERROR: add field Party related to Party using Name (database.entity.notFound.targetNoExist)
+set field Label required
+set field Point required
+//ERROR: set field Party required (database.field.notFound.withThisName)
+entity User has many existing Power using Label called Power
+entity Group has many existing Power using Label called Power
+entity Service has many existing Activity using Name called Activity
+select entity User
+add field Service related to Service using Name
+select entity Activity
+add field Every with type number
+add field Frequence with type enum and values HOUR,DAY,WEEK,YEAR
+delete field Frequence
+add field Frequence with type enum and values HOUR,DAY,WEEK,MONTH,YEAR
+entity Activity has many Entry
+select entity Entry
+add field Name
+add field comment with type text
+add field point with type float
+add field distance with type distance
+add field Picture with type Picture
+select entity Activity
+add field Start date with type date
+add field Start time with type time
+add field End time with type time
+set field Start date required
+select entity Power
+entity Power has many existing User using f_login called Users
+select entity power
+delete tab Users
+entity Power has many existing user using f_login called Users

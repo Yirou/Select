@@ -1,0 +1,26 @@
+[
+    {
+        "target": "e_media_mail",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_media_mail",
+        "as": "r_media_mail",
+        "showAs": "",
+        "structureType": "hasOne"
+    },
+    {
+        "target": "e_media_notification",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_media_notification",
+        "as": "r_media_notification",
+        "showAs": "",
+        "structureType": "hasOne"
+    },
+    {
+        "target": "e_media_function",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_media_function",
+        "as": "r_media_function",
+        "showAs": "",
+        "structureType": "hasOne"
+    }
+]

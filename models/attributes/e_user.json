@@ -1,0 +1,37 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_login": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null,
+        "unique": true
+    },
+    "f_password": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_email": {
+        "type": "STRING",
+        "newmipsType": "email",
+        "defaultValue": null
+    },
+    "f_token_password_reset": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_enabled": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    }
+}

@@ -1,0 +1,71 @@
+add module Referentiel
+
+add entity Organization
+add field Name
+
+#add entity Party
+#add field Name
+#set field Name required
+
+add entity Service
+add field Name
+add field Creation date with type date
+add field Organization related to Organization using Name
+set field Name required
+set field Creation date required
+set field Organization required
+
+add entity Activity
+add field Name
+add field Enabled with type boolean
+add field Organization related to Organization using Name
+add field Picture with type Picture
+add field Every with type number
+add field Frequence with type enum and values HOUR,DAY,WEEK,MONTH,YEAR
+add field Start date with type date
+add field Start time with type time
+add field End time with type time
+set field Name required
+set field Start date required
+set field Organization required
+entity Activity has many Entry
+select entity Entry
+add field Name
+add field comment with type text
+add field point with type float
+add field distance with type distance
+add field Picture with type Picture
+
+
+add entity Power
+add field Label
+add field Point with type float
+add field Party related to Party using Name
+set field Label required
+set field Point required
+set field Party required
+
+#relations
+entity User has many existing Power using Label called Power
+entity Power has many existing User using f_login called Users
+#entity Group has many existing Power using Label called Power
+entity Service has many existing Activity using Name called Activity
+
+select entity User
+add field Service related to Service using Name
+
+#select entity Party
+#add field Activity related to Activity using Name
+#add field Every with type number
+#add field Frequence with type enum and values HOUR,DAY,WEEK,MONTH,YEAR
+#add field Enabled with type boolean
+#add field Picture with type Picture
+#entity Party has many Entry
+#select entity Party
+#add field Name
+#add field Picture with type Picture
+
+#un user a un power, le groupe a un power, tous les mois les membres du group ont un total de point les permettant de jouer aux activity de leur service
+#supprimer les power 0 chaque jour
+#un power appartient à une partie(peut service ou non), ainsi un power ne peut pas servir à n'importe quelle partie
+#on peut désactiver les power sur une partie

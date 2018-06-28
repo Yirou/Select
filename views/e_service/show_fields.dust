@@ -1,0 +1,96 @@
+<div class="nav-tabs-custom" id="tabs">
+    {^hideTab}
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#home">{@__ key="entity.e_service.label_entity" /}</a>
+        </li>
+        {@entityAccess entity="activity"}
+        <li>
+            <a id="r_activity-click" data-toggle="tab" data-tabtype="hasManyPreset" href="#r_activity">{@__ key="entity.e_activity.as_r_activity" /}</a>
+        </li>
+        {/entityAccess}
+    </ul>
+    {/hideTab}
+    <div class="tab-content" style="min-height:275px;">
+        <div id="home" class="tab-pane fade in active">
+            <div id="fields" class="row">
+                <div data-field="f_name" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_name">
+                            {@__ key="entity.e_service.f_name"/}&nbsp;
+                            {@inline_help field="f_name"}
+                            <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_service.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_creation_date" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_creation_date">
+                            {@__ key="entity.e_service.f_creation_date"/}&nbsp;
+                            {@inline_help field="f_creation_date"}
+                            <i data-field="f_creation_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input class="form-control input datepicker-toconvert" placeholder='{@__ key="entity.e_service.f_creation_date" /}' value="{f_creation_date}" type="text" readonly="">
+                        </div>
+                    </div>
+                </div>
+                <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="r_organization">
+                            {@__ key="entity.e_service.r_organization"/}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_service.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <form action="/service/delete" method="post">
+                    <div class="quicklinks">
+                        <a class="btn btn-default" href="javascript:history.back();">
+                            <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;
+                            {@__ key="button.return"/}
+                        </a>
+                        {@actionAccess entity="service" action="delete"}
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                            <span>{@__ key="button.delete"/}</span>
+                        </button>
+                        <input name="id" type="hidden" value="{e_service.id}" class="form-control">
+                        {/actionAccess}
+                        {@actionAccess entity="service" action="update"}
+                        <a href="/service/update_form?id={e_service.id}" class="btn btn-warning">
+                            <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {^hideButton}
+                        {@actionAccess entity="service" action="create"}
+                        <a href="/service/create_form" class="btn btn-success">
+                            <i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.create"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {@actionAccess entity="service" action="read"}
+                        <a href="/service/list" type="submit" class="btn btn-primary">
+                            <i class="fa fa-list fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.list"/}</span>
+                        </a>
+                        {/actionAccess}
+                        {/hideButton}
+                    </div>
+                </form>
+            </div>
+        </div>
+        {^hideTab}
+        {@entityAccess entity="activity"}
+        <div id="r_activity" class="ajax-tab tab-pane fade" data-tabtype="hasManyPreset" data-asso-alias="r_activity" data-asso-foreignkey="fk_id_service_activity" data-asso-flag="{id}" data-asso-source="e_service" data-asso-url="service">
+            <div class="ajax-content sub-tab-table"></div>
+        </div>
+        {/entityAccess}
+        {/hideTab}
+    </div>
+</div>

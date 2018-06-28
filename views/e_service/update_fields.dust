@@ -1,0 +1,47 @@
+<div id="fields" class="row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name" class="required">
+                {@__ key="entity.e_service.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255" required="">
+        </div>
+    </div>
+    <div data-field="f_creation_date" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_creation_date" class="required">
+                {@__ key="entity.e_service.f_creation_date"/}&nbsp;
+                {@inline_help field="f_creation_date"}
+                <i data-field="f_creation_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control input datepicker datepicker-toconvert" placeholder='{@__ key="entity.e_service.f_creation_date" /}' name="f_creation_date" value="{f_creation_date}" type="text" required="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization" class="required">
+                {@__ key="entity.e_service.r_organization" /}&nbsp;
+                {@inline_help field="r_organization"}
+                <i data-field="r_organization" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select style="width:100%;" class="ajax form-control" name="r_organization" data-source="organization" data-using="f_name" required="">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_organization}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_organization}
+            </select>
+        </div>
+    </div>
+</div>

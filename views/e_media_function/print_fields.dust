@@ -1,0 +1,24 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_title" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_title">
+                {@__ key="entity.e_media_function.f_title"/}&nbsp;
+                {@inline_help field="f_title"}
+                <i data-field="f_title" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_media_function.f_title" /}' name="f_title_print" value="{f_title}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_function" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_function">
+                {@__ key="entity.e_media_function.f_function"/}&nbsp;
+                {@inline_help field="f_function"}
+                <i data-field="f_function" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="show-textarea">{f_function|s}</div>
+        </div>
+    </div>
+</div>

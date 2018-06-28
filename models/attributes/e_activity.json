@@ -1,0 +1,58 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": "",
+        "allowNull": false
+    },
+    "f_enabled": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    },
+    "f_picture": {
+        "type": "STRING",
+        "newmipsType": "picture",
+        "defaultValue": null
+    },
+    "f_every": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_frequence": {
+        "type": "ENUM",
+        "values": [
+            "hour",
+            "day",
+            "week",
+            "month",
+            "year"
+        ],
+        "defaultValue": null
+    },
+    "f_start_date": {
+        "type": "DATE",
+        "newmipsType": "date",
+        "defaultValue": null
+    },
+    "f_start_time": {
+        "type": "TIME",
+        "newmipsType": "time",
+        "defaultValue": null
+    },
+    "f_end_time": {
+        "type": "TIME",
+        "newmipsType": "time",
+        "defaultValue": null
+    }
+}

@@ -1,0 +1,57 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_service.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_creation_date" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_creation_date">
+                {@__ key="entity.e_service.f_creation_date"/}&nbsp;
+                {@inline_help field="f_creation_date"}
+                <i data-field="f_creation_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control input datepicker-toconvert" placeholder='{@__ key="entity.e_service.f_creation_date" /}' value="{f_creation_date}" type="text" readonly="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization">
+                {@__ key="entity.e_service.r_organization"/}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_service.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="activity" }
+    <div id="r_activity_print" class="row">
+        <div class="col-xs-12">
+            <h3>{@__ key="entity.e_activity.name_entity" /}</h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_activity e_activity=r_activity}
+            {@eq key=id value=e_activity[0].id}
+            {>"e_activity/list_fields" associationAlias="r_activity" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_activity/list_fields" /}
+            {/r_activity}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>

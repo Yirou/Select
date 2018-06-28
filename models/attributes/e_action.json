@@ -1,0 +1,24 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_order": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_execution": {
+        "type": "ENUM",
+        "values": [
+            "immediate",
+            "differee"
+        ],
+        "defaultValue": "Immédiate"
+    }
+}

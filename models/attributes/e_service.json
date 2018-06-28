@@ -1,0 +1,23 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": "",
+        "allowNull": false
+    },
+    "f_creation_date": {
+        "type": "DATE",
+        "newmipsType": "date",
+        "defaultValue": "",
+        "allowNull": false
+    }
+}

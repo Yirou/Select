@@ -1,0 +1,31 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_type": {
+        "type": "ENUM",
+        "values": [
+            "mail",
+            "notification",
+            "function"
+        ],
+        "defaultValue": null
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": "",
+        "allowNull": false
+    },
+    "f_target_entity": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    }
+}

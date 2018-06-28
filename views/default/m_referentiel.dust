@@ -1,0 +1,67 @@
+{>"layout_m_referentiel"/}
+{<header}
+	<h1>
+		{@__ key="module.m_referentiel"/}
+		<small>{@__ key="module.module"/}</small>
+	</h1>
+	<ol class='breadcrumb'>
+		<li>
+			<a href='/'>
+				<i class='fa fa-home'></i>
+				{@__ key="module.home"/}
+			</a>
+		</li>
+        <li class='active'>   {@__ key="module.m_referentiel"/}</li>
+	</ol>
+{/header}
+
+{<content}
+	<div id="widgets" class='row'>
+	<table>
+
+	</table>
+	</div>
+{/content}
+
+{<custom_js}
+<script type="text/javascript">
+    $(function() {
+        $(".widget-row").click(function() {
+            window.location = $(this).data('href');
+        });
+
+        $("table td").each(function() {
+            var self = this;
+            var type = $(self).data('type');
+            var cellValue = $(self).html();
+
+            if (type == 'color')
+                cellValue = '<i style="color:' + cellValue + '" class="fa fa-lg fa-circle"></i>';
+            else if (type == 'currency')
+                cellValue = '<span data-type="currency">' + cellValue + '</span>';
+            else if (type == 'email' && (cellValue != null && cellValue != ''))
+                cellValue = '<a href="mailto:' + cellValue + '">' + cellValue + '</a>';
+            else if (type == 'tel' && (cellValue != null && cellValue != ''))
+                cellValue = '<a href="tel:' + cellValue + '">' + cellValue + '</a>';
+            else if (type == 'picture') {
+                $(self).html('');
+                $.ajax({
+                    url: '/default/get_file?entity='+$(self).parents('table').data('entity')+'&src='+cellValue,
+                    success: function(data) {
+                        if (data != null && data.data != '') {
+                            console.log(data);
+                            $(self).html('<img src=data:image/;base64,' + data.data + ' />');
+                        }
+                        else {
+                            $(self).html('');
+                        }
+                    }
+                });
+                return;
+            }
+
+            $(self).html(cellValue);
+        });
+    });
+</script>
+{/custom_js}

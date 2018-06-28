@@ -1,0 +1,24 @@
+[
+    {
+        "target": "e_organization",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_organization_organization",
+        "as": "r_organization",
+        "showAs": "Organization",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "target": "e_entry",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_activity",
+        "as": "r_entry",
+        "showAs": "Entry",
+        "structureType": "hasMany"
+    }
+]

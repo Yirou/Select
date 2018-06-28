@@ -1,0 +1,154 @@
+<table id="table_e_activity" data-url="/activity/datalist" class="dataTable table table-bordered table-striped">
+    <thead class="main">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_activity.id_entity"/}&nbsp;
+                {@__ key="entity.e_activity.label_entity"/}
+            </th>
+            <th data-field="f_name" data-col="f_name" data-type="string">
+                {@__ key="entity.e_activity.f_name"/}
+            </th>
+            <th data-field="f_enabled" data-col="f_enabled" data-type="boolean">
+                {@__ key="entity.e_activity.f_enabled"/}
+            </th>
+            <th data-field="r_organization" data-col="r_organization.f_name" data-type="string">
+                {@__ key="entity.e_activity.r_organization"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_organization.f_name"/}
+            </th>
+            <th data-field="f_picture" data-col="f_picture" data-type="picture">
+                {@__ key="entity.e_activity.f_picture"/}
+            </th>
+            <th data-field="f_every" data-col="f_every" data-type="integer">
+                {@__ key="entity.e_activity.f_every"/}
+            </th>
+            <th data-field="f_frequence" data-col="f_frequence" data-type="enum">
+                {@__ key="entity.e_activity.f_frequence"/}
+            </th>
+            <th data-field="f_start_date" data-col="f_start_date" data-type="date">
+                {@__ key="entity.e_activity.f_start_date"/}
+            </th>
+            <th data-field="f_start_time" data-col="f_start_time" data-type="time">
+                {@__ key="entity.e_activity.f_start_time"/}
+            </th>
+            <th data-field="f_end_time" data-col="f_end_time" data-type="time">
+                {@__ key="entity.e_activity.f_end_time"/}
+            </th>
+
+
+            {@actionAccess entity="activity" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <thead class="filters">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_activity.id_entity"/}&nbsp;
+                {@__ key="entity.e_activity.label_entity"/}
+            </th>
+            <th data-field="f_name" data-col="f_name" data-type="string">
+                {@__ key="entity.e_activity.f_name"/}
+            </th>
+            <th data-field="f_enabled" data-col="f_enabled" data-type="boolean">
+                {@__ key="entity.e_activity.f_enabled"/}
+            </th>
+            <th data-field="r_organization" data-col="r_organization.f_name" data-type="string">
+                {@__ key="entity.e_activity.r_organization"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_organization.f_name"/}
+            </th>
+            <th data-field="f_picture" data-col="f_picture" data-type="picture">
+                {@__ key="entity.e_activity.f_picture"/}
+            </th>
+            <th data-field="f_every" data-col="f_every" data-type="integer">
+                {@__ key="entity.e_activity.f_every"/}
+            </th>
+            <th data-field="f_frequence" data-col="f_frequence" data-type="enum">
+                {@__ key="entity.e_activity.f_frequence"/}
+            </th>
+            <th data-field="f_start_date" data-col="f_start_date" data-type="date">
+                {@__ key="entity.e_activity.f_start_date"/}
+            </th>
+            <th data-field="f_start_time" data-col="f_start_time" data-type="time">
+                {@__ key="entity.e_activity.f_start_time"/}
+            </th>
+            <th data-field="f_end_time" data-col="f_end_time" data-type="time">
+                {@__ key="entity.e_activity.f_end_time"/}
+            </th>
+
+
+            {@actionAccess entity="activity" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <tbody>
+        {#e_activity}
+        <tr id="bodyTR">
+            <td data-field="id">{id}</td>
+            <td data-field="f_name" data-type="string">{f_name}</td>
+            <td data-field="f_enabled" data-type="boolean">{f_enabled}</td>
+            <td data-field="r_organization" data-type="string">{r_organization.f_name}</td>
+            <td data-field="f_picture" data-type="picture">
+                <img src="data:image/;base64,{f_picture.buffer}" class="img img-responsive" data-type="picture" name="f_picture" readonly="">
+            </td>
+            <td data-field="f_every" data-type="integer">{f_every}</td>
+            <td data-field="f_frequence" data-type="enum">{f_frequence}</td>
+            <td data-field="f_start_date" data-type="date">{f_start_date}</td>
+            <td data-field="f_start_time" data-type="time">{f_start_time}</td>
+            <td data-field="f_end_time" data-type="time">{f_end_time}</td>
+
+            {@eq key=for value="fieldset"}
+            {@actionAccess entity="activity" action="update"}
+            <td>
+                <form class="fieldsetform">
+                    <input type="hidden" value="{id}" name="idRemove">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-times fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.remove" /}</span></button>
+                </form>
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@eq key=for value="hasMany"}
+            {@actionAccess entity="activity" action="read"}
+            <td>
+                <!--<a class="btn btn-primary" href="/activity/show?id={id}&amp;hideButton=1"><i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.show" /}-->
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@actionAccess entity="activity" action="update"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <a class="ajax btn btn-warning" data-id="{id}" data-href="/activity/update_form?id={id}&amp;associationAlias={associationAlias}&amp;associationForeignKey={associationForeignKey}&amp;associationFlag={associationFlag}&amp;associationSource={associationSource}&amp;associationUrl={associationUrl}&amp;ajax=true">
+                    <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update" /}</span></a>
+                {/eq}
+            </td>
+            {/actionAccess}
+            {@actionAccess entity="activity" action="delete"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <form action="/activity/delete" class="ajax" method="post">
+                    <button onclick="return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');" class="btn btn-danger">
+                        <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                        <span>{@__ key="button.delete" /}</span>
+                        <input name="id" value="{id}" type="hidden">
+                    </button>
+                </form>
+                {/eq}
+            </td>
+            {/actionAccess}
+        </tr>
+        {/e_activity}
+    </tbody>
+</table>

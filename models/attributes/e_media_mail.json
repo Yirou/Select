@@ -1,0 +1,41 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_to": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_cc": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_cci": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_from": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_subject": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_content": {
+        "type": "TEXT",
+        "newmipsType": "text",
+        "defaultValue": null
+    }
+}

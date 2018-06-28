@@ -1,0 +1,404 @@
+{
+    "app": {
+        "name": "Select"
+    },
+    "notification": {
+        "deleteAll": "Supprimer toutes les notifications",
+        "icon": {
+            "choose": "Choisir une icône"
+        }
+    },
+    "login": {
+        "log_in": "Log in",
+        "reset_password": {
+            "title": "Mot de passe oublié",
+            "success": "Votre mot de passe a bien été reinitialisé.",
+            "successMail": "Un email vous permettant de réinitialiser votre mot de passe vous a bien été envoyé.",
+            "userNotExist": "Erreur, cet utilisateur n'existe pas.",
+            "cannotFindToken": "Erreur, impossible de retrouver votre token de réinitialisation."
+        },
+        "first_connection": {
+            "title": "Première connexion",
+            "success": "Mise à jour effectuée, vous pouvez désormais vous connecter avec vos identifiants.",
+            "userNotExist": "Erreur, cet utilisateur n'existe pas ou a déjà été activé.",
+            "alreadyHavePassword": "Opération impossible, cet utilisateur possède déjà un mot de passe.",
+            "passwordNotMatch": "Désolé, les mots de passe ne correspondent pas. Le mot de passe doit faire minimum 4 caractères."
+        },
+        "authentication": "Connexion",
+        "login": "Login",
+        "password": "Mot de passe",
+        "minimalLength": "(4 caractères minimum)",
+        "confirm_password": "Confirmation du mot de passe",
+        "mail": "Mail",
+        "remember_me": "Se souvenir de moi",
+        "submit": "Soumettre"
+    },
+    "settings": {
+        "title": "Paramètres",
+        "auth_component": {
+            "access_managment": "Gestion des accès par groupe",
+            "action_managment": "Gestion des actions par rôle",
+            "moduleList": "Les modules",
+            "entityList": "Les entités",
+            "grouplist": "Groupes:",
+            "rolelist": "Rôles:",
+            "entitylist": "Entités:",
+            "group": "Groupe",
+            "role": "Rôle",
+            "api_status": "Status de l'API",
+            "api_doc": "Documentation de l'API",
+            "action": {
+                "read": "Afficher",
+                "create": "Créer",
+                "update": "Modifier",
+                "delete": "Supprimer"
+            }
+        },
+        "legend": "Modifier vos paramètres",
+        "lang": "Langue",
+        "login": "Login",
+        "email": "Email",
+        "firstname": "Prénom",
+        "lastname": "Nom",
+        "phone": "Téléphone"
+    },
+    "navbar": {
+        "about": "A propos",
+        "help": "Aide",
+        "support": "Support"
+    },
+    "select": {
+        "default": "-- Choisir --"
+    },
+    "module": {
+        "home": "Accueil",
+        "module": "Module",
+        "administration": "Administration",
+        "workspace": "Espace de travail",
+        "m_home": "Accueil",
+        "m_administration": "Administration",
+        "m_referentiel": "Referentiel"
+    },
+    "role": {
+        "administrator": "Administrateur",
+        "developer": "Développeur"
+    },
+    "button": {
+        "profile": "Profil",
+        "disconnect": "Se déconnecter",
+        "show": "Afficher",
+        "update": "Modifier",
+        "delete": "Supprimer",
+        "create": "Créer",
+        "list": "Lister",
+        "add": "Ajouter",
+        "remove": "Retirer",
+        "save": "Sauvegarder",
+        "preview": "Prévisualiser",
+        "record": "Enregistrer",
+        "execute": "Exécuter",
+        "settings": "Paramètres",
+        "download": "Télécharger",
+        "search": "Rechercher",
+        "send": "Envoyer",
+        "validation": "Valider",
+        "previous": "Précédent",
+        "next": "Suivant",
+        "close": "Fermer",
+        "generate": "Générer",
+        "help": "Aide",
+        "cancel": "Annuler",
+        "return": "Retour",
+        "delete_confirm": "Etes-vous sûr de vouloir supprimer cet enregistrement ?",
+        "vote": "Send your vote",
+        "back":"Go back"
+    },
+    "operation": {
+        "show": "Afficher",
+        "update": "Modifier",
+        "create": "Créer",
+        "delete": "Supprimer",
+        "list": "Lister",
+        "add": "Ajouter"
+    },
+    "message": {
+        "create": {
+            "success": "Succès ! L'enregistrement a été créé en base de données.",
+            "failure": "Erreur ! L'enregistrement n'a pas été créé en base de données. Veuillez contacter votre administrateur."
+        },
+        "update": {
+            "success": "Succès ! L'enregistrement a été modifié en base de données.",
+            "failure": "Erreur ! L'enregistrement n'a pas été modifié en base de données. Veuillez contacter votre administrateur."
+        },
+        "delete": {
+            "success": "Succès ! L'enregistrement a été supprimé en base de données.",
+            "failure": "Erreur ! L'enregistrement n'a pas été supprimé en base de données. Veuillez contacter votre administrateur.",
+            "question": "Êtes-vous sûr de vouloir supprimer cette entité ?"
+        },
+        "empty": "Aucune donnée à afficher",
+        "unique": "Ce champ doit être unique:"
+    },
+    "entity": {
+        "e_user": {
+            "label_entity": "Utilisateur",
+            "name_entity": "Utilisateur",
+            "plural_entity": "Utilisateur",
+            "id_entity": "ID",
+            "f_login": "Identifiant",
+            "f_password": "password",
+            "f_email": "Email",
+            "f_token_password_reset": "token_password_reset",
+            "f_enabled": "enabled",
+            "as_r_user": "user",
+            "r_role": "Rôle",
+            "r_group": "Groupe",
+            "r_service": "Service",
+            "as_r_users": "Users"
+        },
+        "e_role": {
+            "label_entity": "Rôle",
+            "name_entity": "Rôle",
+            "plural_entity": "Rôle",
+            "id_entity": "ID",
+            "f_label": "Libellé"
+        },
+        "e_group": {
+            "label_entity": "Groupe",
+            "name_entity": "Groupe",
+            "plural_entity": "Groupe",
+            "id_entity": "ID",
+            "f_label": "Libellé"
+        },
+        "e_api_credentials": {
+            "label_entity": "Identifiant d'API",
+            "name_entity": "Identifiant d'API",
+            "plural_entity": "Identifiant d'API",
+            "id_entity": "ID",
+            "f_client_name": "Nom client",
+            "f_client_key": "Client Key",
+            "f_client_secret": "Client Secret",
+            "r_role": "Rôle",
+            "r_group": "Groupe",
+            "f_token": "Token",
+            "f_token_timeout_tmsp": "Token timeout TMSP"
+        },
+        "e_status": {
+            "label_entity": "Statut",
+            "name_entity": "Statut",
+            "plural_entity": "Statuts",
+            "id_entity": "ID",
+            "f_entity": "Entité",
+            "f_field": "Champ",
+            "f_name": "Nom",
+            "f_color": "Couleur",
+            "f_position": "Position",
+            "f_default": "Défaut",
+            "as_r_children": "Statuts suivants",
+            "apply_default": "Appliquer ce statut aux entités sans statut"
+        },
+        "e_translation": {
+            "label_entity": "Traduction",
+            "name_entity": "Traduction",
+            "plural_entity": "Traductions",
+            "id_entity": "ID",
+            "as_r_translations": "Traductions",
+            "f_language": "Langage",
+            "f_value": "Valeur"
+        },
+        "e_media": {
+            "label_entity": "Média",
+            "name_entity": "Média",
+            "plural_entity": "Média",
+            "id_entity": "ID",
+            "f_type": "Type",
+            "f_name": "Nom",
+            "f_target_entity": "Entité ciblé",
+            "as_r_media": "Média",
+            "f_title": "Titre",
+            "f_description": "Description",
+            "f_icon": "Icône",
+            "f_color": "Couleur"
+        },
+        "e_media_mail": {
+            "label_entity": "Media Mail",
+            "name_entity": "Media Mail",
+            "plural_entity": "Media Mail",
+            "id_entity": "ID",
+            "as_r_media_mail": "Media Mail",
+            "f_to": "Destinataire",
+            "f_cc": "Cc",
+            "f_cci": "Cci",
+            "f_from": "Expéditeur",
+            "f_subject": "Sujet",
+            "f_content": "Contenu"
+        },
+        "e_media_notification": {
+            "label_entity": "Média Notification",
+            "name_entity": "Média Notification",
+            "plural_entity": "Média Notification",
+            "id_entity": "ID",
+            "as_r_media_notification": "Média Notification",
+            "f_title": "Titre",
+            "f_description": "Description",
+            "f_icon": "Icône",
+            "f_color": "Couleur",
+            "r_target_groups": "Groupes ciblés",
+            "r_target_users": "Utilisateurs ciblés"
+        },
+        "e_media_function": {
+            "label_entity": "Media Function",
+            "name_entity": "Media Function",
+            "plural_entity": "Media Function",
+            "id_entity": "ID",
+            "as_r_media_function": "Media Function",
+            "f_title": "Title",
+            "f_function": "Function"
+        },
+        "e_action": {
+            "label_entity": "Action",
+            "name_entity": "Action",
+            "plural_entity": "Action",
+            "id_entity": "ID",
+            "as_r_actions": "Actions",
+            "r_media": "Media",
+            "f_order": "Ordre",
+            "f_execution": "Exécution"
+        },
+        "e_notification": {
+            "label_entity": "Notification",
+            "name_entity": "Notification",
+            "plural_entity": "Notification",
+            "id_entity": "ID",
+            "f_title": "Titre",
+            "f_description": "Description",
+            "f_url": "URL",
+            "f_color": "Couleur",
+            "f_icon": "Icône",
+            "as_r_notification": "Notification"
+        },
+        "e_inline_help": {
+            "label_entity": "Aide en ligne",
+            "name_entity": "Aide en ligne",
+            "plural_entity": "Aides en ligne",
+            "id_entity": "ID",
+            "f_entity": "Entité",
+            "f_field": "Champ",
+            "f_content": "Contenu"
+        },
+        "e_organization": {
+            "label_entity": "Organization",
+            "name_entity": "Organization",
+            "plural_entity": "Organization",
+            "id_entity": "ID",
+            "f_name": "Name"
+        },
+        "e_service": {
+            "label_entity": "Service",
+            "name_entity": "Service",
+            "plural_entity": "Service",
+            "id_entity": "ID",
+            "f_name": "Name",
+            "f_creation_date": "Creation date",
+            "r_organization": "Organization"
+        },
+        "e_activity": {
+            "label_entity": "Activity",
+            "name_entity": "Activity",
+            "plural_entity": "Activity",
+            "id_entity": "ID",
+            "f_name": "Name",
+            "f_enabled": "Enabled",
+            "r_organization": "Organization",
+            "f_picture": "Picture",
+            "as_r_activity": "Activity",
+            "f_every": "Every",
+            "f_frequence": "Frequence",
+            "f_start_date": "Start date",
+            "f_start_time": "Start time",
+            "f_end_time": "End time"
+        },
+        "e_power": {
+            "label_entity": "Power",
+            "name_entity": "Power",
+            "plural_entity": "Power",
+            "id_entity": "ID",
+            "f_label": "Libellé",
+            "f_point": "Point",
+            "as_r_power": "Power"
+        },
+        "e_entry": {
+            "label_entity": "Entry",
+            "name_entity": "Entry",
+            "plural_entity": "Entry",
+            "id_entity": "ID",
+            "as_r_entry": "Entry",
+            "f_name": "Name",
+            "f_comment": "comment",
+            "f_point": "point",
+            "f_distance": "distance",
+            "f_picture": "Picture"
+        }
+    },
+    "global_component": {
+        "local_file_storage": {
+            "filename": "Nom du fichier",
+            "wait_upload": "Des images sont en téléchargement, veuillez patienter un instant et sauvegardez de nouveau"
+        },
+        "contact_form": {
+            "firstname": "Prénom",
+            "lastname": "Nom",
+            "email": "Email",
+            "title": "Titre",
+            "content": "Contenu"
+        },
+        "agenda": {
+            "menu": "Agenda",
+            "add_event": "Ajouter un événement",
+            "no_category": "Pas de catégorie",
+            "pending_event": "Événement(s) en attente",
+            "startHour": "Heure de début",
+            "endHour": "Heure de fin"
+        },
+        "print": {
+            "action": "Imprimer"
+        }
+    },
+    "component": {
+        "status": {
+            "error": {
+                "illegal_status": "This status isn't valid",
+                "action_error": "Une ou plusieurs actions n'ont pas pu être éxecutée. Verifiez que les notifications sont activées et verifiez votre configuration mail"
+            },
+            "next_status": "Statut suivant",
+            "available_status": "Statuts disponibles",
+            "children": "Statuts suivants",
+            "no_status_field": "Vous n'avez pas d'entité ayant un composant statut. Utilisez le générateur pour ajouter un composant statut et cette page vous permettra de configurer ces statuts"
+        }
+    },
+    "defaults": {
+        "widgets": {
+            "lastrecords": {
+                "label": "derniers enregistrements"
+            },
+            "stats": {
+                "more_info": "Plus d'infos"
+            }
+        },
+        "createdAt": "Date de création"
+    },
+    "error": {
+        "404": {
+            "title": "Nous n’avons pas pu trouver ce que vous souhaitiez.",
+            "title2": "Page introuvable.",
+            "textone": "Le lien que vous avez suivi peut être incorrect ou la page peut avoir été supprimée."
+        },
+        "title": "Erreur",
+        "contactAdmin": "Merci de contacter votre administrateur.",
+        "meanwhile": "Entre temps, vous pouvez ",
+        "goHome": "Si vous souhaitez retourner à la page d'accueil, cliquez-ici",
+        "goBack": "Si vous souhaitez revenir en arrière, cliquez-ici",
+        "goBackText": "Revenir en arrière",
+        "home": "Accueil",
+        "valueTooLong": "La valeur renseignée dépasse la longueur maximum autorisée(>30)."
+    }
+}

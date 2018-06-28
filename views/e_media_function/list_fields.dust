@@ -1,0 +1,96 @@
+<table id="table_e_media_function" data-url="/media_function/datalist" class="dataTable table table-bordered table-striped">
+    <thead class="main">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_media_function.id_entity"/}&nbsp;
+                {@__ key="entity.e_media_function.label_entity"/}
+            </th>
+            <th data-field="f_title" data-col="f_title" data-type="string">
+                {@__ key="entity.e_media_function.f_title"/}
+            </th>
+            <th data-field="f_function" data-col="f_function" data-type="text">
+                {@__ key="entity.e_media_function.f_function"/}
+            </th>
+            {@actionAccess entity="media_function" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="media_function" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="media_function" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <thead class="filters">
+        <tr class="fields">
+            <th data-field="id" data-col="id">
+                {@__ key="entity.e_media_function.id_entity"/}&nbsp;
+                {@__ key="entity.e_media_function.label_entity"/}
+            </th>
+            <th data-field="f_title" data-col="f_title" data-type="string">
+                {@__ key="entity.e_media_function.f_title"/}
+            </th>
+            <th data-field="f_function" data-col="f_function" data-type="text">
+                {@__ key="entity.e_media_function.f_function"/}
+            </th>
+            {@actionAccess entity="media_function" action="read"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="media_function" action="update"}
+            <th></th>
+            {/actionAccess}
+            {@actionAccess entity="media_function" action="delete"}
+            <th></th>
+            {/actionAccess}
+        </tr>
+    </thead>
+    <tbody>
+        {#e_media_function}
+        <tr id="bodyTR">
+            <td data-field="id">{id}</td>
+            <td data-field="f_title" data-type="string">{f_title}</td>
+            <td data-field="f_function" data-type="text">{f_function|s}</td>
+            {@eq key=for value="fieldset"}
+            {@actionAccess entity="media_function" action="update"}
+            <td>
+                <form class="fieldsetform">
+                    <input type="hidden" value="{id}" name="idRemove">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-times fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.remove" /}</span></button>
+                </form>
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@eq key=for value="hasMany"}
+            {@actionAccess entity="media_function" action="read"}
+            <td>
+                <!--<a class="btn btn-primary" href="/media_function/show?id={id}&amp;hideButton=1"><i class="fa fa-plus fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.show" /}-->
+            </td>
+            {/actionAccess}
+            {/eq}
+            {@actionAccess entity="media_function" action="update"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <a class="ajax btn btn-warning" data-id="{id}" data-href="/media_function/update_form?id={id}&amp;associationAlias={associationAlias}&amp;associationForeignKey={associationForeignKey}&amp;associationFlag={associationFlag}&amp;associationSource={associationSource}&amp;associationUrl={associationUrl}&amp;ajax=true">
+                    <i class="fa fa-pencil fa-md">&nbsp;&nbsp;</i><span>{@__ key="button.update" /}</span></a>
+                {/eq}
+            </td>
+            {/actionAccess}
+            {@actionAccess entity="media_function" action="delete"}
+            <td>
+                {@eq key=for value="hasMany"}
+                <form action="/media_function/delete" class="ajax" method="post">
+                    <button onclick="return confirm('Etes-vous sûr de vouloir supprimer cet enregistrement ?');" class="btn btn-danger">
+                        <i class="fa fa-trash-o fa-md">&nbsp;&nbsp;</i>
+                        <span>{@__ key="button.delete" /}</span>
+                        <input name="id" value="{id}" type="hidden">
+                    </button>
+                </form>
+                {/eq}
+            </td>
+            {/actionAccess}
+        </tr>
+        {/e_media_function}
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+{
+    "users": [],
+    "activity": {
+        "entries": {
+            "entry1": {
+                "vote": ""
+            },
+            "entry2": {
+                "vote": ""
+            }
+        }
+    }
+}

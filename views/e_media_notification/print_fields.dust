@@ -1,0 +1,68 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_title" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_title">
+                {@__ key="entity.e_media_notification.f_title"/}&nbsp;
+                {@inline_help field="f_title"}
+                <i data-field="f_title" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_media_notification.f_title" /}' name="f_title_print" value="{f_title}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_description" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_description">
+                {@__ key="entity.e_media_notification.f_description"/}&nbsp;
+                {@inline_help field="f_description"}
+                <i data-field="f_description" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_media_notification.f_description" /}' name="f_description_print" value="{f_description}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_icon" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_icon">
+                {@__ key="entity.e_media_notification.f_icon"/}&nbsp;
+                {@inline_help field="f_icon"}
+                <i data-field="f_icon" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_media_notification.f_icon" /}' name="f_icon_print" value="{f_icon}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_color" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_color">
+                {@__ key="entity.e_media_notification.f_color"/}&nbsp;
+                {@inline_help field="f_color"}
+                <i data-field="f_color" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_media_notification.f_color" /}' name="f_color_print" value="{f_color}" type="color" readonly="" disabled="">
+        </div>
+    </div>
+    <div data-field="f_target_groups" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_target_groups">
+                {@__ key="entity.e_media_notification.r_target_groups" /}
+            </label>
+            <select multiple="" disabled="" readonly="" style="width:100%;" class="regular-select form-control" name="r_target_groups" data-source="group" data-using="f_label">
+                {#r_target_groups}
+                <option value="{f_label|string}" selected="">{f_label|string}</option>
+                {/r_target_groups}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_target_users" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_target_users">{@__ key="entity.e_media_notification.r_target_users" /}</label>
+            <select multiple="" disabled="" readonly="" style="width:100%;" class="regular-select form-control" name="r_target_users" data-source="user" data-using="f_login">
+                {#r_target_users}
+                <option value="{f_login|string}" selected="">{f_login|string}</option>
+                {/r_target_users}
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div id="fields" class="row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_entry.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_entry.f_name" /}' name="f_name" value="{f_name}" type="text" maxlength="255">
+        </div>
+    </div>
+    <div data-field="f_comment" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_comment">
+                {@__ key="entity.e_entry.f_comment"/}&nbsp;
+                {@inline_help field="f_comment"}
+                <i data-field="f_comment" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <textarea class="form-control textarea" placeholder='{@__ key="entity.e_entry.f_comment" /}' name="f_comment" id="f_comment_textareaid" type="text">{f_comment|s}</textarea>
+        </div>
+    </div>
+    <div data-field="f_point" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_point">
+                {@__ key="entity.e_entry.f_point"/}&nbsp;
+                {@inline_help field="f_point"}
+                <i data-field="f_point" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" data-custom-type="decimal" placeholder='{@__ key="entity.e_entry.f_point" /}' name="f_point" value="{f_point}" type="text">
+        </div>
+    </div>
+    <div data-field="f_distance" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_distance">
+                {@__ key="entity.e_entry.f_distance"/}&nbsp;
+                {@inline_help field="f_distance"}
+                <i data-field="f_distance" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_entry.f_distance" /}' name="f_distance" value="{f_distance}" type="text">
+        </div>
+    </div>
+    <div data-field="f_picture" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_picture">
+                {@__ key="entity.e_entry.f_picture"/}&nbsp;
+                {@inline_help field="f_picture"}
+                <i data-field="f_picture" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="dropzone dropzone-field" id="f_picture_dropzone" data-storage="local" data-type="picture" data-entity="e_entry"></div>
+            <input type="hidden" name="f_picture" id="f_picture_dropzone_hidden" value="{f_picture.value}" data-buffer="{f_picture.buffer}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,157 @@
+<div id="fields" class="dontbreakitplz row">
+    <div data-field="f_name" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_name">
+                {@__ key="entity.e_activity.f_name"/}&nbsp;
+                {@inline_help field="f_name"}
+                <i data-field="f_name" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_name" /}' name="f_name_print" value="{f_name}" type="text" maxlength="255" readonly="">
+        </div>
+    </div>
+    <div data-field="f_enabled" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_enabled">
+                {@__ key="entity.e_activity.f_enabled"/}&nbsp;
+                {@inline_help field="f_enabled"}
+                <i data-field="f_enabled" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            &nbsp;
+            <br>
+            {@ifTrue key=f_enabled}
+            <input class="form-control input" name="f_enabled_print" value="{f_enabled}" type="checkbox" checked="" disabled="">
+            {:else}
+            <input class="form-control input" name="f_enabled_print" value="{f_enabled}" type="checkbox" disabled="">
+            {/ifTrue}
+        </div>
+    </div>
+    <div data-field="f_organization" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_organization">
+                {@__ key="entity.e_activity.r_organization"/}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.r_organization" /}' name="r_organization" value="{r_organization.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
+    <div data-field="f_picture" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_picture">
+                {@__ key="entity.e_activity.f_picture"/}&nbsp;
+                {@inline_help field="f_picture"}
+                <i data-field="f_picture" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <a href="/default/download?entity=e_activity&amp;f={f_picture.value}">
+                    <img src="data:image/;base64,{f_picture.buffer}" class="img img-responsive" data-type="picture" alt="{f_picture}" name="f_picture" readonly="" height="400" width="400">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div data-field="f_every" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_every">
+                {@__ key="entity.e_activity.f_every"/}&nbsp;
+                {@inline_help field="f_every"}
+                <i data-field="f_every" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_every" /}' name="f_every_print" value="{f_every}" type="number" max="2147483648" readonly="">
+        </div>
+    </div>
+
+    <div data-field="f_frequence" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_frequence">
+                {@__ key="entity.e_activity.f_frequence"/}&nbsp;
+                {@inline_help field="f_frequence"}
+                <i data-field="f_frequence" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            {^f_frequence}
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_frequence" /}' name="f_frequence_print" type="text" readonly="">
+            {/f_frequence}
+            {#enum_radio.e_activity.f_frequence}
+            {@eq key=f_frequence value="{.value}" }
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_frequence" /}' name="f_frequence_print" value="{.translation}" type="text" readonly="">
+            {/eq}
+            {/enum_radio.e_activity.f_frequence}
+        </div>
+    </div>
+    <div data-field="f_start_date" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_date">
+                {@__ key="entity.e_activity.f_start_date"/}&nbsp;
+                {@inline_help field="f_start_date"}
+                <i data-field="f_start_date" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input class="form-control input datepicker-toconvert" placeholder='{@__ key="entity.e_activity.f_start_date" /}' value="{f_start_date}" type="text" readonly="">
+            </div>
+        </div>
+    </div>
+    <div data-field="f_start_time" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_start_time">
+                {@__ key="entity.e_activity.f_start_time"/}&nbsp;
+                {@inline_help field="f_start_time"}
+                <i data-field="f_start_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="bootstrap-timepicker">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_start_time" /}' value="{f_start_time|time}" type="text" readonly="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-field="f_end_time" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_end_time">
+                {@__ key="entity.e_activity.f_end_time"/}&nbsp;
+                {@inline_help field="f_end_time"}
+                <i data-field="f_end_time" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="bootstrap-timepicker">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_end_time" /}' value="{f_end_time|time}" type="text" readonly="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dontbreakitplz">
+    {@entityAccess entity="entry" }
+    <div id="r_entry_print" class="row">
+        <div class="col-xs-12">
+            <h3>
+                {@__ key="entity.e_entry.name_entity" /}
+            </h3>
+            <hr>
+        </div>
+        <div class="col-xs-12">
+            {#r_entry e_entry=r_entry}
+            {@eq key=id value=e_entry[0].id}
+            {>"e_entry/list_fields" associationAlias="r_entry" associationForeignKey="" associationFlag="" associationSource="" associationUrl="" for="hasMany" /}
+            {/eq}
+            {:else}
+            {>"e_entry/list_fields" /}
+            {/r_entry}
+        </div>
+        <br>
+    </div>
+    {/entityAccess}
+</div>

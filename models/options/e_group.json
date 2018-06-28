@@ -1,0 +1,23 @@
+[
+    {
+        "target": "e_user",
+        "relation": "belongsToMany",
+        "foreignKey": "fk_id_e_group",
+        "as": "r_user",
+        "showAs": "user",
+        "through": "9_e_group_e_user",
+        "otherKey": "fk_id_e_user",
+        "structureType": "hasManyPreset"
+    },
+    {
+        "target": "e_power",
+        "relation": "hasMany",
+        "foreignKey": "fk_id_group_power",
+        "as": "r_power",
+        "showAs": "Power",
+        "structureType": "hasManyPreset",
+        "usingField": [
+            "f_label"
+        ]
+    }
+]

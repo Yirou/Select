@@ -1,0 +1,206 @@
+{
+    "home": {
+        "groups": [],
+        "entities": []
+    },
+    "administration": {
+        "groups": [],
+        "entities": [
+            {
+                "name": "user",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "role",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "group",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "api_credentials",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "status",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "translation",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "media",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "media_mail",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "media_notification",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "media_function",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "action",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "notification",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "inline_help",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "access_settings",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "update": [],
+                    "delete": []
+                }
+            }
+        ]
+    },
+    "referentiel": {
+        "groups": [],
+        "entities": [
+            {
+                "name": "organization",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "service",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "activity",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "power",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            },
+            {
+                "name": "entry",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
+            }
+        ]
+    }
+}

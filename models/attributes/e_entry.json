@@ -1,0 +1,36 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_comment": {
+        "type": "TEXT",
+        "newmipsType": "text",
+        "defaultValue": null
+    },
+    "f_point": {
+        "type": "STRING",
+        "newmipsType": "float",
+        "defaultValue": null
+    },
+    "f_distance": {
+        "type": "STRING",
+        "newmipsType": "distance",
+        "defaultValue": null
+    },
+    "f_picture": {
+        "type": "STRING",
+        "newmipsType": "picture",
+        "defaultValue": null
+    }
+}

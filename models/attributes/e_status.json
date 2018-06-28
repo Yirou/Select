@@ -1,0 +1,41 @@
+{
+    "id": {
+        "type": "INTEGER",
+        "autoIncrement": true,
+        "primaryKey": true
+    },
+    "version": {
+        "type": "INTEGER",
+        "defaultValue": 1
+    },
+    "f_entity": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_field": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_name": {
+        "type": "STRING",
+        "newmipsType": "string",
+        "defaultValue": null
+    },
+    "f_color": {
+        "type": "STRING",
+        "newmipsType": "color",
+        "defaultValue": null
+    },
+    "f_position": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": null
+    },
+    "f_default": {
+        "type": "BOOLEAN",
+        "newmipsType": "boolean",
+        "defaultValue": null
+    }
+}

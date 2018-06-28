@@ -1,0 +1,32 @@
+{
+    "queries": [
+        "ALTER TABLE 9_e_organization ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_service ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_service ADD COLUMN `f_creation_date` DATETIME DEFAULT null;",
+        "ALTER TABLE 9_e_service ADD COLUMN `fk_id_organization_organization` INT DEFAULT NULL;ALTER TABLE `9_e_service` ADD FOREIGN KEY (fk_id_organization_organization) REFERENCES `9_e_organization` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_enabled` BOOLEAN DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `fk_id_organization_organization` INT DEFAULT NULL;ALTER TABLE `9_e_activity` ADD FOREIGN KEY (fk_id_organization_organization) REFERENCES `9_e_organization` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_picture` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_power ADD COLUMN `f_label` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_power ADD COLUMN `f_point` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_power ADD COLUMN `fk_id_user_power` INT DEFAULT NULL;ALTER TABLE `9_e_power` ADD FOREIGN KEY (fk_id_user_power) REFERENCES `9_e_user` (id);",
+        "ALTER TABLE 9_e_power ADD COLUMN `fk_id_group_power` INT DEFAULT NULL;ALTER TABLE `9_e_power` ADD FOREIGN KEY (fk_id_group_power) REFERENCES `9_e_group` (id);",
+        "ALTER TABLE 9_e_activity ADD COLUMN `fk_id_service_activity` INT DEFAULT NULL;ALTER TABLE `9_e_activity` ADD FOREIGN KEY (fk_id_service_activity) REFERENCES `9_e_service` (id);",
+        "ALTER TABLE 9_e_user ADD COLUMN `fk_id_service_service` INT DEFAULT NULL;ALTER TABLE `9_e_user` ADD FOREIGN KEY (fk_id_service_service) REFERENCES `9_e_service` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_every` INT DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_frequence` ENUM('hour','day','week','year') DEFAULT null;",
+        "ALTER TABLE 9_e_activity DROP f_frequence;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_frequence` ENUM('hour','day','week','month','year') DEFAULT null;",
+        "ALTER TABLE 9_e_entry ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_entry ADD COLUMN `f_comment` TEXT DEFAULT null;",
+        "ALTER TABLE 9_e_entry ADD COLUMN `f_point` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_entry ADD COLUMN `f_distance` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_entry ADD COLUMN `f_picture` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_start_date` DATETIME DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_start_time` TIME DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `f_end_time` TIME DEFAULT null;",
+        "INSERT INTO 9_e_power_e_user(fk_id_e_power, fk_id_e_user) VALUES(1, 1);",
+        "ALTER TABLE 9_e_power DROP FOREIGN KEY 9_e_power_ibfk_1; ALTER TABLE 9_e_power DROP fk_id_user_power"
+    ]
+}

@@ -1,0 +1,84 @@
+{
+    "e_media": {
+        "f_type": [
+            {
+                "value": "mail",
+                "translations": {
+                    "fr-FR": "Mail",
+                    "en-EN": "Mail"
+                }
+            },
+            {
+                "value": "notification",
+                "translations": {
+                    "fr-FR": "Notification",
+                    "en-EN": "Notification"
+                }
+            },
+            {
+                "value": "function",
+                "translations": {
+                    "fr-FR": "Function",
+                    "en-EN": "Function"
+                }
+            }
+        ]
+    },
+    "e_action": {
+        "f_execution": [
+            {
+                "value": "immediate",
+                "translations": {
+                    "fr-FR": "Immédiate",
+                    "en-EN": "Immédiate"
+                }
+            },
+            {
+                "value": "differee",
+                "translations": {
+                    "fr-FR": "Différée",
+                    "en-EN": "Différée"
+                }
+            }
+        ]
+    },
+    "e_activity": {
+        "f_frequence": [
+            {
+                "value": "hour",
+                "translations": {
+                    "fr-FR": "HOUR",
+                    "en-EN": "HOUR"
+                }
+            },
+            {
+                "value": "day",
+                "translations": {
+                    "fr-FR": "DAY",
+                    "en-EN": "DAY"
+                }
+            },
+            {
+                "value": "week",
+                "translations": {
+                    "fr-FR": "WEEK",
+                    "en-EN": "WEEK"
+                }
+            },
+            {
+                "value": "month",
+                "translations": {
+                    "fr-FR": "MONTH",
+                    "en-EN": "MONTH"
+                }
+            },
+            {
+                "value": "year",
+                "translations": {
+                    "fr-FR": "YEAR",
+                    "en-EN": "YEAR"
+                }
+            }
+        ]
+    }
+}

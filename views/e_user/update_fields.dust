@@ -1,0 +1,88 @@
+<div id="fields" class="row">
+    <div data-field="f_login" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_login">
+                {@__ key="entity.e_user.f_login"/}&nbsp;
+                {@inline_help field="f_login"}
+                <i data-field="f_login" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_user.f_login" /}' name="f_login" value="{f_login}" type="text" maxlength="255">
+        </div>
+    </div>
+
+    <div data-field="f_email" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_email">
+                {@__ key="entity.e_user.f_email"/}&nbsp;
+                {@inline_help field="f_email"}
+                <i data-field="f_email" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <input class="form-control input" placeholder='{@__ key="entity.e_user.f_email" /}' name="f_email" value="{f_email}" type="text" data-type="email">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div data-field="f_role" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_role">
+                {@__ key="entity.e_user.r_role" /}
+                {@inline_help field="r_role"}
+                <i data-field="r_role" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select multiple="" style="width:100%;" class="ajax form-control" name="r_role" data-source="role" data-using="f_label">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_role}
+                <option value="{id}" selected="">{f_label|string}</option>
+                {/r_role}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_group" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_group">
+                {@__ key="entity.e_user.r_group" /}
+                {@inline_help field="r_group"}
+                <i data-field="r_group" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select multiple="" style="width:100%;" class="ajax form-control" name="r_group" data-source="group" data-using="f_label">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_group}
+                <option value="{id}" selected="">{f_label|string}</option>
+                {/r_group}
+            </select>
+        </div>
+    </div>
+    <div data-field="f_service" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_service">
+                {@__ key="entity.e_user.r_service" /}&nbsp;
+                {@inline_help field="r_service"}
+                <i data-field="r_service" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <select style="width:100%;" class="ajax form-control" name="r_service" data-source="service" data-using="f_name">
+                <option value="">
+                    {@__ key="select.default" /}
+                </option>
+                {#r_service}
+                <option value="{id}" selected="">{f_name|string}</option>
+                {/r_service}
+            </select>
+        </div>
+    </div>
+</div>
