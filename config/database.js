@@ -5,9 +5,9 @@ var databaseConf = {
 		connection: {
                   host: '127.0.0.1',
                   port: '3306',
-                  user: '',
-                  password: '',
-                  database: '',
+                  user: 'newmips',
+                  password: 'newmips',
+                  database: 'newmips',
                   users_table: 'user',
                   dateStrings: 'true'
 		}
@@ -16,9 +16,9 @@ var databaseConf = {
             connection: {
                   host: '127.0.0.1',
                   port: '3306',
-                  user: '',
-                  password: '',
-                  database: '',
+                  user: 'newmips',
+                  password: 'newmips',
+                  database: 'newmips',
                   users_table: 'user',
                   dateStrings: 'true'
             }
@@ -27,9 +27,9 @@ var databaseConf = {
 		connection: {
                   host: '127.0.0.1',
                   port: '3306',
-                  user: '',
-                  password: '',
-                  database: '',
+                  user: 'newmips',
+                  password: 'newmips',
+                  database: 'newmips',
                   users_table: 'user',
                   dateStrings: 'true'
 		}

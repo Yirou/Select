@@ -831,7 +831,7 @@ router.get('/settings', block_access.isLoggedIn, function (req, res) {
 });
 
 router.get('/:id/powers', block_access.isLoggedIn, function (req, res) {
-    models.E_user.findOne({where: {id: req.params.id}, include: [{model: models.E_power, as: 'r_power', where: {f_label: {$ne: 'Vote'}}}]}).then(function (user) {
+    models.E_user.findOne({where: {id: req.session.passport.user.id}, include: [{model: models.E_power, as: 'r_power', where: {f_label: {$ne: 'Vote'}}}]}).then(function (user) {
         if (user) {
             res.status(200).json(user.r_power);
         } else
