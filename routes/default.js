@@ -71,9 +71,10 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
             for (var prop in results[i])
                 data[prop] = results[i][prop];
         var activity_helper = require('../utils/activity_helper');
-        models.E_activity.findAll({where: {f_enabled: 1,fk_id_team_team:req.session.passport.user.fk_id_team_team}}).then(function (activities) {
+        models.E_activity.findAll({where: {f_enabled: 1, fk_id_team_team: req.session.passport.user.fk_id_team_team}}).then(function (activities) {
             data.activityHTML = '<div class="row">';
             var i = 0;
+            var j = 0;
             //build activities HTML
             activities.forEach(function (activity) {
                 entity_helper.getPicturesBuffers(activity, "e_activity").then(function () {
@@ -88,7 +89,7 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
                         data.activityHTML += '<div class="progress">'
                         data.activityHTML += '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">'
                         data.activityHTML += '<span class="">Vote END </span>'
-                        data.activityHTML += '<span>Result: ' + activity_helper.getResult(activity,req.session.passport.user.fk_id_team_team) + ' </span>'
+                        data.activityHTML += '<span>Result: ' + activity_helper.getResult(activity, req.session.passport.user.fk_id_team_team) + ' </span>'
                         data.activityHTML += '</div>'
                         data.activityHTML += '</div>'
                     } else {
@@ -109,10 +110,14 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
                         i = 0;
                         data.activityHTML += '</div><div class="row">';
                     }
+                    j++;
+                    if (j === activities.length) {
+                        data.activityHTML += '</div>';
+                        res.render('default/m_home', data);
+                    }
                 });
             });
-            data.activityHTML += '</div>';
-            res.render('default/m_home', data);
+
         });
     });
 });
