@@ -84,7 +84,7 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
                     data.activityHTML += '<img class="card-img-top img img-responsive" src="data:image/;base64,' + activity.f_picture.buffer + '" alt="Activity picture">';
                     data.activityHTML += '</a>';
                     var today = moment().tz("Europe/Paris");
-                    if (activity_helper.getState(today, activity,) === 0) {
+                    if (activity_helper.getState(today, activity) === 0) {
                         data.activityHTML += '<div class="progress">'
                         data.activityHTML += '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">'
                         data.activityHTML += '<span class="">Vote END </span>'
