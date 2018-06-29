@@ -16,10 +16,8 @@ var databaseConf = {
             connection: {
                   host: '127.0.0.1',
                   port: '3306',
-                  user: 'newmips',
-                  password: 'newmips',
-                  database: 'newmips',
-                  users_table: 'user',
+                  user: 'select',
+                  password: 'select1',
                   dateStrings: 'true'
             }
       },
