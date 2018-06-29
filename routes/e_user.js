@@ -257,45 +257,50 @@ router.post('/create', block_access.actionAccessMiddleware("user", "create"), fu
                 message: 'message.create.success',
                 level: "success"
             }];
+        models.E_power.findOne({where: {f_label: 'Vote'}}).then(function (power) {
+            if (power) {
+                e_user.setR_power(power);
+            }
+            var promises = [];
 
-        var promises = [];
-
-        if (typeof req.body.associationFlag !== 'undefined') {
-            redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
-            promises.push(new Promise(function (resolve, reject) {
-                models[entity_helper.capitalizeFirstLetter(req.body.associationSource)].findOne({where: {id: req.body.associationFlag}}).then(function (association) {
-                    if (!association) {
-                        e_user.destroy();
-                        var err = new Error();
-                        err.message = "Association not found.";
-                        reject(err);
-                    }
-
-                    var modelName = req.body.associationAlias.charAt(0).toUpperCase() + req.body.associationAlias.slice(1).toLowerCase();
-                    if (typeof association['add' + modelName] !== 'undefined') {
-                        association['add' + modelName](e_user.id).then(resolve).catch(function (err) {
+            if (typeof req.body.associationFlag !== 'undefined') {
+                redirect = '/' + req.body.associationUrl + '/show?id=' + req.body.associationFlag + '#' + req.body.associationAlias;
+                promises.push(new Promise(function (resolve, reject) {
+                    models[entity_helper.capitalizeFirstLetter(req.body.associationSource)].findOne({where: {id: req.body.associationFlag}}).then(function (association) {
+                        if (!association) {
+                            e_user.destroy();
+                            var err = new Error();
+                            err.message = "Association not found.";
                             reject(err);
-                        });
-                    } else {
-                        var obj = {};
-                        obj[req.body.associationForeignKey] = e_user.id;
-                        association.update(obj).then(resolve).catch(function (err) {
-                            reject(err);
-                        });
-                    }
+                        }
+
+                        var modelName = req.body.associationAlias.charAt(0).toUpperCase() + req.body.associationAlias.slice(1).toLowerCase();
+                        if (typeof association['add' + modelName] !== 'undefined') {
+                            association['add' + modelName](e_user.id).then(resolve).catch(function (err) {
+                                reject(err);
+                            });
+                        } else {
+                            var obj = {};
+                            obj[req.body.associationForeignKey] = e_user.id;
+                            association.update(obj).then(resolve).catch(function (err) {
+                                reject(err);
+                            });
+                        }
+                    });
+                }));
+            }
+
+            // We have to find value in req.body that are linked to an hasMany or belongsToMany association
+            // because those values are not updated for now
+            model_builder.setAssocationManyValues(e_user, req.body, createObject, options).then(function () {
+                Promise.all(promises).then(function () {
+                    res.redirect(redirect);
+                }).catch(function (err) {
+                    entity_helper.error500(err, req, res, '/user/create_form');
                 });
-            }));
-        }
-
-        // We have to find value in req.body that are linked to an hasMany or belongsToMany association
-        // because those values are not updated for now
-        model_builder.setAssocationManyValues(e_user, req.body, createObject, options).then(function () {
-            Promise.all(promises).then(function () {
-                res.redirect(redirect);
-            }).catch(function (err) {
-                entity_helper.error500(err, req, res, '/user/create_form');
             });
         });
+
     }).catch(function (err) {
         entity_helper.error500(err, req, res, '/user/create_form');
     });

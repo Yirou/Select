@@ -200,6 +200,16 @@
                     "delete": [],
                     "update": []
                 }
+            },
+            {
+                "name": "team",
+                "groups": [],
+                "actions": {
+                    "read": [],
+                    "create": [],
+                    "delete": [],
+                    "update": []
+                }
             }
         ]
     }

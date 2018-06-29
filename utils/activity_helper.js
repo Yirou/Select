@@ -100,9 +100,9 @@ exports.getState = function (today, activity) {
     }
     return 0;
 };
-exports.getResult = function (activity) {
+exports.getResult = function (activity, idTeam) {
     try {
-        var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + activity.id + '.json';
+        var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + idTeam + '_' + activity.id + '.json';
         var fileContent = fs.readFileSync(path);
         var obj = JSON.parse(fileContent);
         if (Object.keys(obj.activity.entries).length) {
@@ -115,7 +115,6 @@ exports.getResult = function (activity) {
         } else
             return "";
     } catch (e) {
-        
         return "";
     }
 }

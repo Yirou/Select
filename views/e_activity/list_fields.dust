@@ -33,6 +33,10 @@
             <th data-field="f_end_time" data-col="f_end_time" data-type="time">
                 {@__ key="entity.e_activity.f_end_time"/}
             </th>
+            <th data-field="r_team" data-col="r_team.f_name" data-type="string">
+                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+            </th>
+
 
 
             {@actionAccess entity="activity" action="read"}
@@ -80,6 +84,10 @@
             <th data-field="f_end_time" data-col="f_end_time" data-type="time">
                 {@__ key="entity.e_activity.f_end_time"/}
             </th>
+            <th data-field="r_team" data-col="r_team.f_name" data-type="string">
+                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+            </th>
+
 
 
             {@actionAccess entity="activity" action="read"}
@@ -108,6 +116,7 @@
             <td data-field="f_start_date" data-type="date">{f_start_date}</td>
             <td data-field="f_start_time" data-type="time">{f_start_time}</td>
             <td data-field="f_end_time" data-type="time">{f_end_time}</td>
+            <td data-field="r_team" data-type="string">{r_team.f_name}</td>
 
             {@eq key=for value="fieldset"}
             {@actionAccess entity="activity" action="update"}

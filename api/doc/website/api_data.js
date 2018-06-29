@@ -731,7 +731,8 @@ define({ "api": [
             "type": "String",
             "allowedValues": [
               "organization",
-              "entry"
+              "entry",
+              "team"
             ],
             "optional": false,
             "field": "association",
@@ -1161,6 +1162,13 @@ define({ "api": [
             "optional": true,
             "field": "fk_id_activity",
             "description": "<p><code>id</code> of entity entry to associate</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "fk_id_team_team",
+            "description": "<p><code>id</code> of entity team to associate</p>"
           }
         ],
         "Query parameters": [
@@ -1341,6 +1349,13 @@ define({ "api": [
             "optional": true,
             "field": "fk_id_activity",
             "description": "<p><code>id</code> of entity entry to associate</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "fk_id_team_team",
+            "description": "<p><code>id</code> of entity team to associate</p>"
           }
         ],
         "Query parameters": [
@@ -8716,6 +8731,400 @@ define({ "api": [
   },
   {
     "type": "delete",
+    "url": "/api/team/:id?token=TOKEN",
+    "title": "5 - Delete",
+    "version": "1.0.0",
+    "description": "<p>Permanently delete a record of <code>team</code> with <code>id</code></p>",
+    "group": "e_team",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of team to delete</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No team with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/9/api/doc/doc_descriptor.js",
+    "groupTitle": "Team",
+    "name": "DeleteApiTeamIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/team/:id?token=TOKEN",
+    "title": "2 - Find one",
+    "version": "1.0.0",
+    "description": "<p>Fetch one record of <code>team</code> with <code>id</code></p>",
+    "group": "e_team",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The <code>id</code> of team to fetch</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "team",
+            "description": "<p>Object of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "team.id",
+            "description": "<p><code>id</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "team.version",
+            "description": "<p><code>version</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "team.f_name",
+            "description": "<p><code>f_name</code> of team</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No team with ID <code>id</code> found</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/9/api/doc/doc_descriptor.js",
+    "groupTitle": "Team",
+    "name": "GetApiTeamIdTokenToken"
+  },
+  {
+    "type": "get",
+    "url": "/api/team?token=TOKEN&limit=10&offset=0",
+    "title": "1 - Find all",
+    "version": "1.0.0",
+    "description": "<p>Fetch records of <code>team</code> from <code>offset</code> until <code>limit</code></p>",
+    "group": "e_team",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "teams",
+            "description": "<p>List of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "teams.id",
+            "description": "<p><code>id</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "teams.version",
+            "description": "<p><code>version</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "teams.f_name",
+            "description": "<p><code>f_name</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>Limit used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Offset used to fetch data</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "totalCount",
+            "description": "<p>The total count of records for team</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/9/api/doc/doc_descriptor.js",
+    "groupTitle": "Team",
+    "name": "GetApiTeamTokenTokenLimit10Offset0",
+    "parameter": {
+      "fields": {
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "50",
+            "description": "<p>The number of rows to be fetched</p>"
+          },
+          {
+            "group": "Query parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>The offset by which rows will be fetched</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/team/?token=TOKEN",
+    "title": "3 - Create",
+    "version": "1.0.0",
+    "description": "<p>Create a record of <code>team</code> using values defined in request's <code>body</code></p>",
+    "group": "e_team",
+    "parameter": {
+      "fields": {
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_name",
+            "description": "<p><code>f_name</code> of team</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "team",
+            "description": "<p>Created team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "team.id",
+            "description": "<p><code>id</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "team.f_name",
+            "description": "<p><code>f_name</code> of team</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to create team</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/9/api/doc/doc_descriptor.js",
+    "groupTitle": "Team",
+    "name": "PostApiTeamTokenToken"
+  },
+  {
+    "type": "put",
+    "url": "/api/team/:id?token=TOKEN",
+    "title": "4 - Update",
+    "version": "1.0.0",
+    "description": "<p>Update record of <code>team</code> with <code>id</code> using values defined in request's <code>body</code></p>",
+    "group": "e_team",
+    "parameter": {
+      "fields": {
+        "Params parameters": [
+          {
+            "group": "Params parameters",
+            "type": "Integer",
+            "optional": false,
+            "field": "id",
+            "description": "<p><code>id</code> of the team to update</p>"
+          }
+        ],
+        "Body parameters": [
+          {
+            "group": "Body parameters",
+            "type": "String",
+            "optional": true,
+            "field": "f_name",
+            "description": "<p>New value of <code>f_name</code> for team</p>"
+          }
+        ],
+        "Query parameters": [
+          {
+            "group": "Query parameters",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>API Bearer Token, required for authentication</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "team",
+            "description": "<p>Updated team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "team.id",
+            "description": "<p><code>id</code> of team</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "team.f_name",
+            "description": "<p><code>f_name</code> of team</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 404": [
+          {
+            "group": "Error 404",
+            "type": "Object",
+            "optional": false,
+            "field": "NotFound",
+            "description": "<p>No team with ID <code>id</code> found</p>"
+          }
+        ],
+        "Error 500": [
+          {
+            "group": "Error 500",
+            "type": "Object",
+            "optional": false,
+            "field": "ServerError",
+            "description": "<p>An error occured when trying to update team</p>"
+          }
+        ]
+      }
+    },
+    "filename": "/home/magikbyte/NetBeansProjects/newmips/workspace/9/api/doc/doc_descriptor.js",
+    "groupTitle": "Team",
+    "name": "PutApiTeamIdTokenToken"
+  },
+  {
+    "type": "delete",
     "url": "/api/translation/:id?token=TOKEN",
     "title": "5 - Delete",
     "version": "1.0.0",
@@ -9230,7 +9639,8 @@ define({ "api": [
               "group",
               "notification",
               "service",
-              "power"
+              "power",
+              "team"
             ],
             "optional": false,
             "field": "association",
@@ -9576,6 +9986,13 @@ define({ "api": [
             "optional": true,
             "field": "fk_id_service_service",
             "description": "<p><code>id</code> of entity service to associate</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "fk_id_team_team",
+            "description": "<p><code>id</code> of entity team to associate</p>"
           }
         ],
         "Query parameters": [
@@ -9679,6 +10096,13 @@ define({ "api": [
             "optional": true,
             "field": "fk_id_service_service",
             "description": "<p><code>id</code> of entity service to associate</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "fk_id_team_team",
+            "description": "<p><code>id</code> of entity team to associate</p>"
           }
         ],
         "Query parameters": [

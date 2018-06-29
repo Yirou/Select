@@ -93,6 +93,12 @@
             <input class="form-control input" placeholder='{@__ key="entity.e_user.r_service" /}' name="r_service" value="{r_service.f_name|string}" type="text" readonly="">
         </div>
     </div>
+    <div data-field="f_team" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_team"> {@__ key="entity.e_user.r_team"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_user.r_team" /}' name="r_team" value="{r_team.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
 </div>
 <div class="dontbreakitplz">
     {@entityAccess entity="notification" }
@@ -135,7 +141,9 @@
     {@entityAccess entity="power" }
     <div id="r_power_print" class="row">
         <div class="col-xs-12">
-            <h3>{@__ key="entity.e_power.name_entity" /}</h3>
+            <h3>
+                {@__ key="entity.e_power.name_entity" /}
+            </h3>
             <hr>
         </div>
         <div class="col-xs-12">

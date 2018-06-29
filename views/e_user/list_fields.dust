@@ -10,8 +10,13 @@
                 {@__ key="entity.e_user.f_email"/}
             </th>
             <th data-field="r_service" data-col="r_service.f_name" data-type="string">
-                {@__ key="entity.e_user.r_service"/}&nbsp;-&nbsp;{@__ key="entity.e_service.f_name"/}
+                {@__ key="entity.e_user.r_service"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_service.f_name"/}
             </th>
+            <th data-field="r_team" data-col="r_team.f_name" data-type="string">
+                {@__ key="entity.e_user.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+            </th>
+
 
 
 
@@ -37,8 +42,13 @@
                 {@__ key="entity.e_user.f_email"/}
             </th>
             <th data-field="r_service" data-col="r_service.f_name" data-type="string">
-                {@__ key="entity.e_user.r_service"/}&nbsp;-&nbsp;{@__ key="entity.e_service.f_name"/}
+                {@__ key="entity.e_user.r_service"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_service.f_name"/}
             </th>
+            <th data-field="r_team" data-col="r_team.f_name" data-type="string">
+                {@__ key="entity.e_user.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+            </th>
+
 
 
 
@@ -61,6 +71,7 @@
 
             <td data-field="f_email" data-type="email">{f_email}</td>
             <td data-field="r_service" data-type="string">{r_service.f_name}</td>
+            <td data-field="r_team" data-type="string">{r_team.f_name}</td>
 
 
             {@eq key=for value="fieldset"}

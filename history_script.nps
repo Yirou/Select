@@ -50,3 +50,10 @@ entity Power has many existing User using f_login called Users
 select entity power
 delete tab Users
 entity Power has many existing user using f_login called Users
+select module referentiel
+add entity Team
+add field Name
+select entity Activity
+add field Team related to Team using Name
+select entity User
+add field Team related to Team using Name

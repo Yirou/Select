@@ -71,7 +71,7 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
             for (var prop in results[i])
                 data[prop] = results[i][prop];
         var activity_helper = require('../utils/activity_helper');
-        models.E_activity.findAll({where: {f_enabled: 1}}).then(function (activities) {
+        models.E_activity.findAll({where: {f_enabled: 1,fk_id_team_team:req.session.passport.user.fk_id_team_team}}).then(function (activities) {
             data.activityHTML = '<div class="row">';
             var i = 0;
             //build activities HTML
@@ -84,11 +84,11 @@ router.get('/home', block_access.isLoggedIn, block_access.moduleAccessMiddleware
                     data.activityHTML += '<img class="card-img-top img img-responsive" src="data:image/;base64,' + activity.f_picture.buffer + '" alt="Activity picture">';
                     data.activityHTML += '</a>';
                     var today = moment().tz("Europe/Paris");
-                    if (activity_helper.getState(today, activity) === 0) {
+                    if (activity_helper.getState(today, activity,) === 0) {
                         data.activityHTML += '<div class="progress">'
                         data.activityHTML += '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">'
                         data.activityHTML += '<span class="">Vote END </span>'
-                        data.activityHTML += '<span>Result: ' + activity_helper.getResult(activity) + ' </span>'
+                        data.activityHTML += '<span>Result: ' + activity_helper.getResult(activity,req.session.passport.user.fk_id_team_team) + ' </span>'
                         data.activityHTML += '</div>'
                         data.activityHTML += '</div>'
                     } else {

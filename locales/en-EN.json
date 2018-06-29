@@ -151,7 +151,8 @@
             "r_role": "Role",
             "r_group": "Group",
             "r_service": "Service",
-            "as_r_users": "Users"
+            "as_r_users": "Users",
+            "r_team": "Team"
         },
         "e_role": {
             "label_entity": "Role",
@@ -308,7 +309,8 @@
             "f_frequence": "Frequence",
             "f_start_date": "Start date",
             "f_start_time": "Start time",
-            "f_end_time": "End time"
+            "f_end_time": "End time",
+            "r_team": "Team"
         },
         "e_power": {
             "label_entity": "Power",
@@ -330,6 +332,13 @@
             "f_point": "point",
             "f_distance": "distance",
             "f_picture": "Picture"
+        },
+        "e_team": {
+            "label_entity": "Team",
+            "name_entity": "Team",
+            "plural_entity": "Team",
+            "id_entity": "ID",
+            "f_name": "Name"
         }
     },
     "global_component": {

@@ -27,6 +27,9 @@
         "ALTER TABLE 9_e_activity ADD COLUMN `f_start_time` TIME DEFAULT null;",
         "ALTER TABLE 9_e_activity ADD COLUMN `f_end_time` TIME DEFAULT null;",
         "INSERT INTO 9_e_power_e_user(fk_id_e_power, fk_id_e_user) VALUES(1, 1);",
-        "ALTER TABLE 9_e_power DROP FOREIGN KEY 9_e_power_ibfk_1; ALTER TABLE 9_e_power DROP fk_id_user_power"
+        "ALTER TABLE 9_e_power DROP FOREIGN KEY 9_e_power_ibfk_1; ALTER TABLE 9_e_power DROP fk_id_user_power",
+        "ALTER TABLE 9_e_team ADD COLUMN `f_name` VARCHAR(255) DEFAULT null;",
+        "ALTER TABLE 9_e_activity ADD COLUMN `fk_id_team_team` INT DEFAULT NULL;ALTER TABLE `9_e_activity` ADD FOREIGN KEY (fk_id_team_team) REFERENCES `9_e_team` (id) ON DELETE SET NULL ON UPDATE CASCADE;",
+        "ALTER TABLE 9_e_user ADD COLUMN `fk_id_team_team` INT DEFAULT NULL;ALTER TABLE `9_e_user` ADD FOREIGN KEY (fk_id_team_team) REFERENCES `9_e_team` (id) ON DELETE SET NULL ON UPDATE CASCADE;"
     ]
 }

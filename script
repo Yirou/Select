@@ -15,10 +15,14 @@ set field Name required
 set field Creation date required
 set field Organization required
 
+add entity Team
+add field Name 
+
 add entity Activity
 add field Name
 add field Enabled with type boolean
 add field Organization related to Organization using Name
+add field Team related to Team using Name
 add field Picture with type Picture
 add field Every with type number
 add field Frequence with type enum and values HOUR,DAY,WEEK,MONTH,YEAR
@@ -53,6 +57,7 @@ entity Service has many existing Activity using Name called Activity
 
 select entity User
 add field Service related to Service using Name
+add field Team related to Team using Name
 
 #select entity Party
 #add field Activity related to Activity using Name

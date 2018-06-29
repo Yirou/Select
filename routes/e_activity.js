@@ -110,9 +110,9 @@ router.post('/subdatalist', block_access.actionAccessMiddleware("activity", "rea
 
 router.get('/:id/display', block_access.isLoggedIn, function (req, res) {
     var id = req.params.id;
-    models.E_activity.findOne({where: {id: id}, include: [{model: models.E_entry, as: 'r_entry'}]}).then(function (e_activity) {
+    var data = {};
+    models.E_activity.findOne({where: {id: id, fk_id_team_team: req.session.passport.user.fk_id_team_team}, include: [{model: models.E_entry, as: 'r_entry'}]}).then(function (e_activity) {
         if (e_activity) {
-            var data = {};
             data.activityItemsHTML = '<div class="row">';
             var i = 0;
             var j = 0;
@@ -183,7 +183,7 @@ router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {
                         };
                         obj.activity.entries[e_entry.f_name] = {};
                         obj.activity.entries[e_entry.f_name]['point'] = 0;
-                        var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + e_activity.id + '.json';
+                        var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + req.session.passport.user.fk_id_team_team + '_' + e_activity.id + '.json';
                         fs.readFile(path, function (e, fileContent) {
                             if (!e)
                                 obj = JSON.parse(fileContent);

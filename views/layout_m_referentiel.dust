@@ -162,5 +162,32 @@
         </ul>
     </li>
     {/entityAccess}
+    {@entityAccess entity="team"}
+    <li id="team_menu_item" style="display:block;" class="treeview">
+        <a href="#">
+            <i class="fa fa-folder"></i>
+            <span>{@__ key="entity.e_team.label_entity" /}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            {@actionAccess entity="team" action="create"}
+            <li>
+                <a href="/team/create_form">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.create" /}
+                </a>
+            </li>
+            {/actionAccess}
+            {@actionAccess entity="team" action="read"}
+            <li>
+                <a href="/team/list">
+                    <i class="fa fa-angle-double-right"></i>
+                    {@__ key="operation.list" /}
+                </a>
+            </li>
+            {/actionAccess}
+        </ul>
+    </li>
+    {/entityAccess}
 </ul>
 {/sidebar}

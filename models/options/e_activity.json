@@ -20,5 +20,19 @@
         "as": "r_entry",
         "showAs": "Entry",
         "structureType": "hasMany"
+    },
+    {
+        "target": "e_team",
+        "relation": "belongsTo",
+        "foreignKey": "fk_id_team_team",
+        "as": "r_team",
+        "showAs": "Team",
+        "structureType": "relatedTo",
+        "usingField": [
+            {
+                "value": "f_name",
+                "type": "string"
+            }
+        ]
     }
 ]

@@ -132,6 +132,12 @@
             </div>
         </div>
     </div>
+    <div data-field="f_team" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="r_team"> {@__ key="entity.e_activity.r_team"/} </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.r_team" /}' name="r_team" value="{r_team.f_name|string}" type="text" readonly="">
+        </div>
+    </div>
 </div>
 <div class="dontbreakitplz">
     {@entityAccess entity="entry" }

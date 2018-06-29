@@ -103,7 +103,7 @@
  * @apiGroup e_user
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the user to which <code>association</code> is related
- * @apiParam (Params parameters) {String=role,group,notification,service,power} association Name of the related entity
+ * @apiParam (Params parameters) {String=role,group,notification,service,power,team} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -120,6 +120,7 @@
  * @apiParam (Body parameters) {String} [f_login] <code>f_login</code> of user
  * @apiParam (Body parameters) {String} [f_email] <code>f_email</code> of user
  * @apiParam (Body parameters) {Integer} [fk_id_service_service] <code>id</code> of entity service to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
  * @apiSuccess {Object} user Created user
  * @apiSuccess {Integer} user.id <code>id</code> of user
  * @apiSuccess {String} user.f_login <code>f_login</code> of user
@@ -137,6 +138,7 @@
  * @apiParam (Body parameters) {String} [f_login] New value of <code>f_login</code> for user
  * @apiParam (Body parameters) {String} [f_email] New value of <code>f_email</code> for user
  * @apiParam (Body parameters) {Integer} [fk_id_service_service] <code>id</code> of entity service to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
  * @apiSuccess {Object} user Updated user
  * @apiSuccess {Integer} user.id <code>id</code> of user
  * @apiSuccess {String} user.f_login <code>f_login</code> of user
@@ -1504,7 +1506,7 @@
  * @apiGroup e_activity
  * @apiUse tokenLimitOffset
  * @apiParam (Params parameters) {Integer} id <code>id</code> of the activity to which <code>association</code> is related
- * @apiParam (Params parameters) {String=organization,entry} association Name of the related entity
+ * @apiParam (Params parameters) {String=organization,entry,team} association Name of the related entity
  * @apiSuccess {Object} Object Object of <code>association</code>
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
@@ -1527,6 +1529,7 @@
  * @apiParam (Body parameters) {Time} [f_end_time] <code>f_end_time</code> of activity
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_activity] <code>id</code> of entity entry to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
  * @apiSuccess {Object} activity Created activity
  * @apiSuccess {Integer} activity.id <code>id</code> of activity
  * @apiSuccess {String} activity.f_name <code>f_name</code> of activity
@@ -1555,6 +1558,7 @@
  * @apiParam (Body parameters) {Time} [f_end_time] New value of <code>f_end_time</code> for activity
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_activity] <code>id</code> of entity entry to associate
+ * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
  * @apiSuccess {Object} activity Updated activity
  * @apiSuccess {Integer} activity.id <code>id</code> of activity
  * @apiSuccess {String} activity.f_name <code>f_name</code> of activity
@@ -1777,6 +1781,83 @@
  * @apiSuccessExample {json} Success-Response:
  *     HTTP/1.1 200 OK
  * @apiError (Error 404) {Object} NotFound No entry with ID <code>id</code> found
+ */
+
+
+
+/********************************************
+ ********************************************
+ * TEAM
+ ********************************************
+ *******************************************/
+/** @apiDefine e_team Team */
+/**
+ * @api {get} /api/team?token=TOKEN&limit=10&offset=0 1 - Find all
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch records of <code>team</code> from <code>offset</code> until <code>limit</code>
+ * @apiGroup e_team
+ * @apiUse tokenLimitOffset
+ * @apiSuccess {Object[]} teams List of team
+ * @apiSuccess {Integer} teams.id <code>id</code> of team
+ * @apiSuccess {Integer} teams.version <code>version</code> of team
+ * @apiSuccess {String} teams.f_name <code>f_name</code> of team
+ * @apiSuccess {Integer} limit Limit used to fetch data
+ * @apiSuccess {Integer} offset Offset used to fetch data
+ * @apiSuccess {Integer} totalCount The total count of records for team
+ */
+
+/**
+ * @api {get} /api/team/:id?token=TOKEN 2 - Find one
+ * @apiVersion 1.0.0
+ * @apiDescription Fetch one record of <code>team</code> with <code>id</code>
+ * @apiGroup e_team
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id The <code>id</code> of team to fetch
+ * @apiSuccess {Object} team Object of team
+ * @apiSuccess {Integer} team.id <code>id</code> of team
+ * @apiSuccess {Integer} team.version <code>version</code> of team
+ * @apiSuccess {String} team.f_name <code>f_name</code> of team
+ * @apiError (Error 404) {Object} NotFound No team with ID <code>id</code> found
+ */
+
+/**
+ * @api {post} /api/team/?token=TOKEN 3 - Create
+ * @apiVersion 1.0.0
+ * @apiDescription Create a record of <code>team</code> using values defined in request's <code>body</code>
+ * @apiGroup e_team
+ * @apiUse token
+ * @apiParam (Body parameters) {String} [f_name] <code>f_name</code> of team
+ * @apiSuccess {Object} team Created team
+ * @apiSuccess {Integer} team.id <code>id</code> of team
+ * @apiSuccess {String} team.f_name <code>f_name</code> of team
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to create team
+ */
+
+/**
+ * @api {put} /api/team/:id?token=TOKEN 4 - Update
+ * @apiVersion 1.0.0
+ * @apiDescription Update record of <code>team</code> with <code>id</code> using values defined in request's <code>body</code>
+ * @apiGroup e_team
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of the team to update
+ * @apiParam (Body parameters) {String} [f_name] New value of <code>f_name</code> for team
+ * @apiSuccess {Object} team Updated team
+ * @apiSuccess {Integer} team.id <code>id</code> of team
+ * @apiSuccess {String} team.f_name <code>f_name</code> of team
+ * @apiError (Error 404) {Object} NotFound No team with ID <code>id</code> found
+ * @apiError (Error 500) {Object} ServerError An error occured when trying to update team
+ */
+
+/**
+ * @api {delete} /api/team/:id?token=TOKEN 5 - Delete
+ * @apiVersion 1.0.0
+ * @apiDescription Permanently delete a record of <code>team</code> with <code>id</code>
+ * @apiGroup e_team
+ * @apiUse token
+ * @apiParam (Params parameters) {Integer} id <code>id</code> of team to delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ * @apiError (Error 404) {Object} NotFound No team with ID <code>id</code> found
  */
 
 
