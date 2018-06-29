@@ -36,7 +36,7 @@
                             <span>{@__ key="button.vote"/}</span>
                         </a>
                     </span>
-                    
+
                 </div>
 
             </div>
@@ -56,156 +56,159 @@
                 <script src="/js/Newmips/show.js" type="text/javascript"></script>
 
                 <script type='text/javascript'>
-                    $(function () {
-                        var modalHTML = '';
-                        /* Call component delete action */
-                        $(document).on("submit", ".componentDeleteForm", function () {
-                            var component = $(this).attr("data-component");
-                            var url = '/' + component + '/delete';
-                            var data = $(this).serialize();
-                            data += '&idEntity={e_activity.id}&ajax=true';
-                            var form = this;
-                            $.ajax({
-                                url: url,
-                                method: 'post',
-                                data: data,
-                                success: function () {
-                                    /* tables is a global var comming from simpleTable.js */
-                                    tables[$(form).parents('table').attr('id')].row($(form).parents('tr')).remove().draw();
-                                }
-                            });
-                            return false;
-                        });
-                        $(".vote-card").on('click', function () {
-                            $('.vote-card').removeClass('vote-card-selected');
-                            $(this).addClass('vote-card-selected');
-                            $('.vote-card a').attr("vote", "false");
-                            $('a', this).attr("vote", "true");
-                        });
-                        $("#a-btn-vote").on('click', function () {
-                            var a = $('a[vote=true]', document);
-                            var href = a.attr('href');
-                            if (href) {
-                                showModalConfirm();
-                            } else {
-                                showModal("Please select an item");
-                            }
-
-                        });
-                        /*$("#a-btn-vote").on('click', function () {
-                         var a = $('a[vote=true]', document);
-                         var href = a.attr('href');
-                         if (href) {
-                         if (confirm("Etes-vous sûr de votre choix")) {
-                         
-                         if (href && href.length > 1)
-                         $.ajax({
-                         url: '/activity/{e_activity.id}/vote',
-                         method: 'POST',
-                         data: {entry: href.replace('#', '')},
-                         success: function (data) {
-                         showModal(data.message);
-                         },
-                         error: function (error) {
-                         showModal(error.responseJSON.message);
-                         }
-                         });
-                         } else {
-                         console.log("Vote cancel");
-                         }
-                         } else {
-                         showModal("Please select an item");
-                         }
-                         });*/
-
-                        function showModal(message) {
-                            var html = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-                            html += '<div class="modal-dialog" role="document">';
-                            html += ' <div class="modal-content">';
-                            html += '   <div class="modal-header bg-blue">';
-                            html += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                            html += '    <h4 class="modal-title" id="myModalLabel">Information</h4>';
-                            html += '   </div>';
-                            html += '  <div class="modal-body">';
-                            html += message;
-                            html += '</div>';
-                            html += ' </div>';
-                            html += '</div>';
-                            html += '</div>';
-                            $(html).modal('show');
-                        }
-                        function showModalConfirm(message) {
-                            $.ajax({
-                                url: '/user/{session.passport.user.id}/powers',
-                                method: 'get',
-                                success: function (data) {
-                                    modalHTML = '<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
-                                    modalHTML += '<div class="modal-dialog" role="document">';
-                                    modalHTML += ' <div class="modal-content">';
-                                    modalHTML += '   <div class="modal-header">';
-                                    modalHTML += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                                    modalHTML += '    <h4 class="modal-title" id="myModalLabel">Information</h4>';
-                                    modalHTML += '   </div>';
-                                    modalHTML += '  <div class="modal-body">';
-                                    modalHTML += '<h4>Etes-vous sûr de votre choix ?</h4>';
-
-                                    modalHTML += "<div class='row'>";
-                                    modalHTML += "<div class='col-xs-12 col-md-11'>";
-                                    if (data && data.length) {
-                                        modalHTML += "<strong>Utiliser un pouvoir</strong>";
-                                        modalHTML += "<select multiple name='powers' class='form-control' style='width:100%;' id='powers'><option></option>";
-                                        data.forEach(function (power) {
-                                            modalHTML += '<option value=' + power.id + '>' + power.f_label + '</option>';
-                                        });
-
-                                        modalHTML += "</select>";
+                            $(function () {
+                                var modalHTML = '';
+                                /* Call component delete action */
+                                $(document).on("submit", ".componentDeleteForm", function () {
+                                    var component = $(this).attr("data-component");
+                                    var url = '/' + component + '/delete';
+                                    var data = $(this).serialize();
+                                    data += '&idEntity={e_activity.id}&ajax=true';
+                                    var form = this;
+                                    $.ajax({
+                                        url: url,
+                                        method: 'post',
+                                        data: data,
+                                        success: function () {
+                                            /* tables is a global var comming from simpleTable.js */
+                                            tables[$(form).parents('table').attr('id')].row($(form).parents('tr')).remove().draw();
+                                        }
+                                    });
+                                    return false;
+                                });
+                                $(".vote-card").on('click', function () {
+                                    $('.vote-card').removeClass('vote-card-selected');
+                                    $(this).addClass('vote-card-selected');
+                                    $('.vote-card a').attr("vote", "false");
+                                    $('a', this).attr("vote", "true");
+                                });
+                                $("#a-btn-vote").on('click', function () {
+                                    var a = $('a[vote=true]', document);
+                                    var href = a.attr('href');
+                                    if (href) {
+                                        showModalConfirm();
+                                    } else {
+                                        showModal("Please select an item");
                                     }
-                                    modalHTML += "<span id='voteResponse' class='text-success'></span>";
-                                    modalHTML += "</div>";
-                                    modalHTML += '</div><br>';
-                                    modalHTML += '<div class="row">';
-                                    modalHTML += "<div class='col-xs-12 col-md-9'>";
-                                    modalHTML += '</div>';
-                                    modalHTML += "<div class='col-xs-12 col-md-1'>";
-                                    modalHTML += "<button class='btn btn-info btn-confirm-vote' id='btnYes'>Yes</button> ";
-                                    modalHTML += '</div>';
-                                    modalHTML += "<div class='col-xs-12 col-md-1 btn-confirm-vote'>";
-                                    modalHTML += "<button class='btn btn-danger' id='btnNo'>No</button> ";
-                                    modalHTML += '</div>';
-                                    modalHTML += "</div>";
 
-                                    modalHTML += '</div>';
-                                    modalHTML += ' </div>';
-                                    modalHTML += '</div>';
-                                    modalHTML += '</div>';
-                                    $(modalHTML).modal('show');
+                                });
+                                /*$("#a-btn-vote").on('click', function () {
+                                 var a = $('a[vote=true]', document);
+                                 var href = a.attr('href');
+                                 if (href) {
+                                 if (confirm("Etes-vous sûr de votre choix")) {
+                                 
+                                 if (href && href.length > 1)
+                                 $.ajax({
+                                 url: '/activity/{e_activity.id}/vote',
+                                 method: 'POST',
+                                 data: {entry: href.replace('#', '')},
+                                 success: function (data) {
+                                 showModal(data.message);
+                                 },
+                                 error: function (error) {
+                                 showModal(error.responseJSON.message);
+                                 }
+                                 });
+                                 } else {
+                                 console.log("Vote cancel");
+                                 }
+                                 } else {
+                                 showModal("Please select an item");
+                                 }
+                                 });*/
+
+                                function showModal(message) {
+                                    var html = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+                                    html += '<div class="modal-dialog" role="document">';
+                                    html += ' <div class="modal-content">';
+                                    html += '   <div class="modal-header bg-blue">';
+                                    html += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+                                    html += '    <h4 class="modal-title" id="myModalLabel">Information</h4>';
+                                    html += '   </div>';
+                                    html += '  <div class="modal-body">';
+                                    html += message;
+                                    html += '</div>';
+                                    html += ' </div>';
+                                    html += '</div>';
+                                    html += '</div>';
+                                    $(html).modal('show');
                                 }
-                            });
+                                function showModalConfirm(message) {
+                                    $.ajax({
+                                        url: '/user/{session.passport.user.id}/powers',
+                                        method: 'get',
+                                        success: function (data) {
+                                            modalHTML = '<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+                                            modalHTML += '<div class="modal-dialog" role="document">';
+                                            modalHTML += ' <div class="modal-content">';
+                                            modalHTML += '   <div class="modal-header">';
+                                            modalHTML += '    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+                                            modalHTML += '    <h4 class="modal-title" id="myModalLabel">Information</h4>';
+                                            modalHTML += '   </div>';
+                                            modalHTML += '  <div class="modal-body">';
+                                            modalHTML += '<h4>Etes-vous sûr de votre choix ?</h4>';
+
+                                            modalHTML += "<div class='row'>";
+                                            modalHTML += "<div class='col-xs-12 col-md-11'>";
+                                            if (data && data.length) {
+                                                modalHTML += "<strong>Utiliser un pouvoir</strong>";
+                                                modalHTML += "<select multiple name='powers' class='form-control' style='width:100%;' id='powers'><option></option>";
+                                                data.forEach(function (power) {
+                                                    modalHTML += '<option value=' + power.id + '>' + power.f_label + '</option>';
+                                                });
+
+                                                modalHTML += "</select>";
+                                            }
+                                            modalHTML += "<span id='voteResponse' class='text-success'></span>";
+                                            modalHTML += "</div>";
+                                            modalHTML += '</div><br>';
+                                            modalHTML += '<div class="row">';
+                                            modalHTML += "<div class='col-xs-12 col-md-9'>";
+                                            modalHTML += '</div>';
+                                            modalHTML += "<div class='col-xs-12 col-md-1'>";
+                                            modalHTML += "<button class='btn btn-info btn-confirm-vote' id='btnYes'>Yes</button> ";
+                                            modalHTML += '</div>';
+                                            modalHTML += "<div class='col-xs-12 col-md-1 btn-confirm-vote'>";
+                                            modalHTML += "<button class='btn btn-danger' id='btnNo'>No</button> ";
+                                            modalHTML += '</div>';
+                                            modalHTML += "</div>";
+
+                                            modalHTML += '</div>';
+                                            modalHTML += ' </div>';
+                                            modalHTML += '</div>';
+                                            modalHTML += '</div>';
+                                            $(modalHTML).modal('show');
+                                        }
+                                    });
 
 
 
-                        }
-                        $(document).on('click', '#btnNo', function () {
-                            $(document).find('#modalConfirm').modal('toggle');
-                        });
-
-                        $(document).on('click', '#btnYes', function () {
-                            var a = $('a[vote=true]', document);
-                            var href = a.attr('href');
-                            if (href && href.length > 1)
-                                $.ajax({
-                                    url: '/activity/{e_activity.id}/vote',
-                                    method: 'POST',
-                                    data: {entry: href.replace('#', ''), powers: $('#powers').val()},
-                                    success: function (data) {
-                                        $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
-                                    },
-                                    error: function (error) {
-                                        $(document).find('#voteResponse').prop('class', '').addClass('text-danger').text(error.responseJSON.message);
-                                    }
+                                }
+                                $(document).on('click', '#btnNo', function () {
+                                    $(document).find('#modalConfirm').modal('toggle');
                                 });
 
-                        });
-                    });
+                                $(document).on('click', '#btnYes', function () {
+                                    var a = $('a[vote=true]', document);
+                                    var href = a.attr('href');
+                                    if (href && href.length > 1)
+                                        $.ajax({
+                                            url: '/activity/{e_activity.id}/vote',
+                                            method: 'POST',
+                                            data: {entry: href.replace('#', ''), powers: $('#powers').val()},
+                                            success: function (data) {
+                                                $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
+                                            },
+                                            error: function (error) {
+                                                if (error && error.responseJSON && error.responseJSON.message) {
+                                                    $(document).find('#voteResponse').prop('class', '').addClass('text-danger').text(error.responseJSON.message);
+                                                }
+
+                                            }
+                                        });
+
+                                });
+                            });
                 </script>
                 {/custom_js}
