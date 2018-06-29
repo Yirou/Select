@@ -198,7 +198,9 @@
                                             method: 'POST',
                                             data: {entry: href.replace('#', ''), powers: $('#powers').val()},
                                             success: function (data) {
-                                                $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
+                                                if(data){
+                                                    $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
+                                                }
                                             },
                                             error: function (error) {
                                                 if (error && error.responseJSON && error.responseJSON.message) {
