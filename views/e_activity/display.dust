@@ -152,7 +152,6 @@
                                     modalHTML += "<div class='row'>";
                                     modalHTML += "<div class='col-xs-12 col-md-11'>";
                                     if (data && data.length) {
-                                        console.log(data);
                                         modalHTML += "<strong>Utiliser un pouvoir</strong>";
                                         modalHTML += "<select multiple name='powers' class='form-control' style='width:100%;' id='powers'><option></option>";
                                         data.forEach(function (power) {

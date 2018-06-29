@@ -181,8 +181,6 @@ router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {
                                 }
                             }
                         };
-                        obj.activity.entries[e_entry.f_name] = {};
-                        obj.activity.entries[e_entry.f_name]['point'] = 0;
                         var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + req.session.passport.user.fk_id_team_team + '_' + e_activity.id + '.json';
                         fs.readFile(path, function (e, fileContent) {
                             if (!e)
@@ -190,11 +188,16 @@ router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {
                             //check if user already vote
                             if (obj.users.indexOf(req.session.passport.user.id) < 0) {
                                 obj.users.push(req.session.passport.user.id);
-                                obj.activity.entries[e_entry.f_name] = {
-                                    id: e_entry.id,
-                                    name: e_entry.f_name,
-                                    point: parseInt(obj.activity.entries[e_entry.f_name]['point']) + 1
-                                };
+                                if (obj.activity.entries[e_entry.f_name]) {
+                                    obj.activity.entries[e_entry.f_name].point = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + 1;
+                                } else {
+                                    obj.activity.entries[e_entry.f_name] = {
+                                        id: e_entry.id,
+                                        name: e_entry.f_name,
+                                        point: 1
+                                    };
+                                }
+
                                 if (req.body.powers) {
                                     var powers = req.body.powers;
                                     if (!Array.isArray(powers))
@@ -206,7 +209,7 @@ router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {
                                                     //we can not destroy  vote
                                                     if (e_powers[i].id == powers[j]) {
                                                         //user use this power
-                                                        obj.activity.entries[e_entry.f_name]['point'] = parseInt(obj.activity.entries[e_entry.f_name]['point']) + parseInt(e_powers[i].f_point);
+                                                        obj.activity.entries[e_entry.f_name]['point'] = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + parseInt(e_powers[i].f_point);
                                                         if (e_powers[i].f_label != 'Vote')
                                                             e_powers.splice(i, 1);
                                                         break;
