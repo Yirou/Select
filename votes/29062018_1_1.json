@@ -1,0 +1,19 @@
+{
+    "users": [
+        4,
+        1
+    ],
+    "activity": {
+        "infos": {
+            "name": "Pause déjeuner",
+            "id": 1
+        },
+        "entries": {
+            "Casino": {
+                "id": 3,
+                "name": "Casino",
+                "point": 2
+            }
+        }
+    }
+}
