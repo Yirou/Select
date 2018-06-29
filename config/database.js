@@ -18,6 +18,8 @@ var databaseConf = {
                   port: '3306',
                   user: 'select',
                   password: 'select1',
+                  database: 'select',
+                  users_table: 'user',
                   dateStrings: 'true'
             }
       },
