@@ -146,7 +146,7 @@
                                         url: '/user/{session.passport.user.id}/powers',
                                         method: 'get',
                                         success: function (data) {
-                                            modalHTML = '<div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
+                                            modalHTML = '<div class="modal fade modalConfirm" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">';
                                             modalHTML += '<div class="modal-dialog" role="document">';
                                             modalHTML += ' <div class="modal-content">';
                                             modalHTML += '   <div class="modal-header">';
@@ -167,7 +167,7 @@
 
                                                 modalHTML += "</select>";
                                             }
-                                            modalHTML += "<span id='voteResponse' class='text-success'></span>";
+                                            modalHTML += "<span id='voteResponse' class='text-success voteResponse'></span>";
                                             modalHTML += "</div>";
                                             modalHTML += '</div><br>';
                                             modalHTML += '<div class="row">';
@@ -193,7 +193,7 @@
 
                                 }
                                 $(document).on('click', '#btnNo', function () {
-                                    $(document).find('#modalConfirm').modal('toggle');
+                                    $(document).find('.modalConfirm').modal('hide');
                                 });
 
                                 $(document).on('click', '#btnYes', function () {
@@ -204,16 +204,16 @@
                                             data: {entries: selectedItems, powers: $('#powers').val()},
                                             success: function (data) {
                                                 if (data) {
-                                                    $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
+                                                    $(document).find('.voteResponse').prop('class', '').addClass('text-success').text(data.message);
                                                 }
                                             },
                                             error: function (error) {
                                                 if (error && error.responseJSON && error.responseJSON.message) {
-                                                    $(document).find('#voteResponse').prop('class', '').addClass('text-danger').text(error.responseJSON.message);
+                                                    $(document).find('.voteResponse').prop('class', '').addClass('text-danger').text(error.responseJSON.message);
                                                 }
                                             }
                                         });
-
+                                    } else {
                                     }
 
                                 });
