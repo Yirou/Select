@@ -195,11 +195,14 @@ function addVotes(entries, user, activity, obj, powers) {
                         }
                     }
                     user.setR_power(e_powers);
-                    fs.writeFileSync(path, JSON.stringify(obj, null, 4));
+                    if (i === entries.length)
+                        fs.writeFileSync(path, JSON.stringify(obj, null, 4));
                 });
             });
-        } else
-            fs.writeFileSync(path, JSON.stringify(obj, null, 4));
+        } else {
+            if (i === entries.length)
+                fs.writeFileSync(path, JSON.stringify(obj, null, 4));
+        }
     });
 }
 router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {

@@ -88,6 +88,8 @@
                                             var id = $('a', this).attr('href').replace('#', '');
                                             if (selectedItems.indexOf(id) < 0 && selectedItems.length < 3)
                                                 selectedItems.push(id);
+                                        }else{
+                                            showModal("You have to make 3 choices");
                                         }
                                     }
 
