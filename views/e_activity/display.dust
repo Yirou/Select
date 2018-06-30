@@ -57,6 +57,7 @@
 
                 <script type='text/javascript'>
                             $(function () {
+                                var selectedItems = [];
                                 var modalHTML = '';
                                 /* Call component delete action */
                                 $(document).on("submit", ".componentDeleteForm", function () {
@@ -77,20 +78,26 @@
                                     return false;
                                 });
                                 $(".vote-card").on('click', function () {
-                                    $('.vote-card').removeClass('vote-card-selected');
-                                    $(this).addClass('vote-card-selected');
-                                    $('.vote-card a').attr("vote", "false");
-                                    $('a', this).attr("vote", "true");
-                                });
-                                $("#a-btn-vote").on('click', function () {
-                                    var a = $('a[vote=true]', document);
-                                    var href = a.attr('href');
-                                    if (href) {
-                                        showModalConfirm();
+                                    if ($(this).hasClass('vote-card-selected')) {
+                                        $(this).removeClass('vote-card-selected');
+                                        var id = $('a', this).attr('href').replace('#', '');
+                                        selectedItems.splice(selectedItems.indexOf(id), 1);
                                     } else {
-                                        showModal("Please select an item");
+                                        if ($('.vote-card-selected').length < 3) {
+                                            $(this).addClass('vote-card-selected');
+                                            var id = $('a', this).attr('href').replace('#', '');
+                                            if (selectedItems.indexOf(id) < 0 && selectedItems.length < 3)
+                                                selectedItems.push(id);
+                                        }
                                     }
 
+                                });
+                                $("#a-btn-vote").on('click', function () {
+                                    if ($('.vote-card-selected').length < 3) {
+                                        showModal("You have to make 3 choices");
+                                    } else {
+                                        showModalConfirm();
+                                    }
                                 });
                                 /*$("#a-btn-vote").on('click', function () {
                                  var a = $('a[vote=true]', document);
@@ -190,15 +197,13 @@
                                 });
 
                                 $(document).on('click', '#btnYes', function () {
-                                    var a = $('a[vote=true]', document);
-                                    var href = a.attr('href');
-                                    if (href && href.length > 1)
+                                    if (selectedItems.length === 3) {
                                         $.ajax({
                                             url: '/activity/{e_activity.id}/vote',
                                             method: 'POST',
-                                            data: {entry: href.replace('#', ''), powers: $('#powers').val()},
+                                            data: {entries: selectedItems, powers: $('#powers').val()},
                                             success: function (data) {
-                                                if(data){
+                                                if (data) {
                                                     $(document).find('#voteResponse').prop('class', '').addClass('text-success').text(data.message);
                                                 }
                                             },
@@ -206,9 +211,10 @@
                                                 if (error && error.responseJSON && error.responseJSON.message) {
                                                     $(document).find('#voteResponse').prop('class', '').addClass('text-danger').text(error.responseJSON.message);
                                                 }
-
                                             }
                                         });
+
+                                    }
 
                                 });
                             });

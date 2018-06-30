@@ -161,81 +161,84 @@ router.get('/:id/display', block_access.isLoggedIn, function (req, res) {
     });
 });
 
+function addVotes(entries, user, activity, obj, powers) {
+    var i = 0;
+    var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + user.fk_id_team_team + '_' + activity.id + '.json';
+    entries.forEach(function (e_entry) {
+        i++;
+        if (obj.users.indexOf(user.id) < 0)
+            obj.users.push(user.id);
+        if (obj.activity.entries[e_entry.f_name]) {
+            obj.activity.entries[e_entry.f_name].point = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + 1;
+        } else {
+            obj.activity.entries[e_entry.f_name] = {
+                id: e_entry.id,
+                name: e_entry.f_name,
+                point: 1
+            };
+        }
+        if (powers && i === 1) {
+            if (!Array.isArray(powers))
+                powers = [powers];
+            models.E_user.findOne({where: {id: user.id}}).then(function (user) {
+                user.getR_power({distinct: 'f_label'}).then(function (e_powers) {
+                    for (var i = 0; i < e_powers.length; i++) {
+                        for (var j = 0; j < powers.length; j++) {
+                            //we can not destroy  vote
+                            if (e_powers[i].id == powers[j]) {
+                                //user use this power
+                                obj.activity.entries[e_entry.f_name]['point'] = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + parseInt(e_powers[i].f_point);
+                                if (e_powers[i].f_label != 'Vote')
+                                    e_powers.splice(i, 1);
+                                break;
+                            }
+                        }
+                    }
+                    user.setR_power(e_powers);
+                    fs.writeFileSync(path, JSON.stringify(obj, null, 4));
+                });
+            });
+        } else
+            fs.writeFileSync(path, JSON.stringify(obj, null, 4));
+    });
+}
 router.post('/:id/vote', block_access.isLoggedIn, function (req, res) {
     var id = req.params.id;
-    var entry = req.body.entry;
+    var entries = req.body.entries;
     models.E_activity.findOne({where: {id: id}}).then(function (e_activity) {
         if (e_activity) {
-            models.E_entry.findOne({where: {id: entry}}).then(function (e_entry) {
-                if (e_entry) {
-                    var today = moment().tz("Europe/Paris");
-                    if (activity_helper.getState(today, e_activity) === 1) {
-                        var obj = {
-                            "users": [],
-                            "activity": {
-                                "infos": {
-                                    "name": e_activity.f_name,
-                                    "id": e_activity.id
-                                },
-                                "entries": {
-                                }
-                            }
-                        };
-                        var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + req.session.passport.user.fk_id_team_team + '_' + e_activity.id + '.json';
-                        fs.readFile(path, function (e, fileContent) {
-                            if (!e)
-                                obj = JSON.parse(fileContent);
-                            //check if user already vote
-                            if (obj.users.indexOf(req.session.passport.user.id) < 0) {
-                                obj.users.push(req.session.passport.user.id);
-                                if (obj.activity.entries[e_entry.f_name]) {
-                                    obj.activity.entries[e_entry.f_name].point = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + 1;
-                                } else {
-                                    obj.activity.entries[e_entry.f_name] = {
-                                        id: e_entry.id,
-                                        name: e_entry.f_name,
-                                        point: 1
-                                    };
-                                }
-
-                                if (req.body.powers) {
-                                    var powers = req.body.powers;
-                                    if (!Array.isArray(powers))
-                                        powers = [powers];
-                                    models.E_user.findOne({where: {id: req.session.passport.user.id}}).then(function (user) {
-                                        user.getR_power({distinct: 'f_label'}).then(function (e_powers) {
-                                            for (var i = 0; i < e_powers.length; i++) {
-                                                for (var j = 0; j < powers.length; j++) {
-                                                    //we can not destroy  vote
-                                                    if (e_powers[i].id == powers[j]) {
-                                                        //user use this power
-                                                        obj.activity.entries[e_entry.f_name]['point'] = parseInt(obj.activity.entries[e_entry.f_name]['point'] || 0) + parseInt(e_powers[i].f_point);
-                                                        if (e_powers[i].f_label != 'Vote')
-                                                            e_powers.splice(i, 1);
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            user.setR_power(e_powers);
-                                            fs.writeFileSync(path, JSON.stringify(obj, null, 4));
-                                            res.status(200).json({message: "Vote OK, thank you!"});
-                                        });
-                                    });
-                                } else {
-                                    fs.writeFileSync(path, JSON.stringify(obj, null, 4));
-                                    res.status(200).json({message: "Vote OK, thank you!"});
-                                }
-
-                            } else {
-                                res.status(409).json({message: "Your vote has already submit"});
-                            }
+            var today = moment().tz("Europe/Paris");
+            if (activity_helper.getState(today, e_activity) === 1) {
+                var obj = {
+                    "users": [],
+                    "activity": {
+                        "infos": {
+                            "name": e_activity.f_name,
+                            "id": e_activity.id
+                        },
+                        "entries": {
+                        }
+                    }
+                };
+                var path = __dirname + '/../votes/' + moment().format('DDMMYYYY') + '_' + req.session.passport.user.fk_id_team_team + '_' + e_activity.id + '.json';
+                fs.readFile(path, function (e, fileContent) {
+                    if (!e)
+                        obj = JSON.parse(fileContent);
+                    //check if user has already vote
+                    if (obj.users.indexOf(req.session.passport.user.id) < 0) {
+                        models.E_entry.findAll({where: {id: {$in: entries}}}).then(function (e_entries) {
+                            if (e_entries.length) {
+                                addVotes(e_entries, req.session.passport.user, e_activity, obj, req.body.powers);
+                                res.status(200).json({message: "Vote OK, thank you!"});
+                            } else
+                                res.status(404).json({message: 'Entry not found'});
                         });
-                    } else
-                        res.status(403).json({message: "Vote doesn't start for this activity"});
-
-                } else
-                    res.status(404).json({message: 'Entry not found'});
-            });
+                    } else {
+                        res.status(409).json({message: "Your vote has already submit"});
+                    }
+                });
+            } else
+                res.status(403).json({message: "Vote doesn't start for this activity"});
         } else {
             res.status(404).end({message: "Activity not found"});
         }
