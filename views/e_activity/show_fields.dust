@@ -153,8 +153,21 @@
                 </div>
                 <div data-field="f_team" class="fieldLineHeight col-xs-12">
                     <div class="form-group">
-                        <label for="r_team"> {@__ key="entity.e_activity.r_team"/} </label>
+                        <label for="r_team">
+                            {@__ key="entity.e_activity.r_team"/}
+                        </label>
                         <input class="form-control input" placeholder='{@__ key="entity.e_activity.r_team" /}' name="r_team" value="{r_team.f_name|string}" type="text" readonly="">
+                    </div>
+                </div>
+                <div data-field="f_user_choice" class="fieldLineHeight col-xs-12">
+                    <div class="form-group">
+                        <label for="f_user_choice">
+                            {@__ key="entity.e_activity.f_user_choice"/}&nbsp;
+                            {@inline_help field="f_user_choice"}
+                            <i data-field="f_user_choice" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                            {/inline_help}
+                        </label>
+                        <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_user_choice" /}' name="f_user_choice" value="{f_user_choice}" type="number" max="2147483648" readonly="">
                     </div>
                 </div>
             </div>

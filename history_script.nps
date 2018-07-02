@@ -57,3 +57,6 @@ select entity Activity
 add field Team related to Team using Name
 select entity User
 add field Team related to Team using Name
+select entity Activity
+add field User choice with type number
+set field User choice required

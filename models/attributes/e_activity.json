@@ -54,5 +54,11 @@
         "type": "TIME",
         "newmipsType": "time",
         "defaultValue": null
+    },
+    "f_user_choice": {
+        "type": "INTEGER",
+        "newmipsType": "number",
+        "defaultValue": "",
+        "allowNull": false
     }
 }

@@ -1473,6 +1473,7 @@
  * @apiSuccess {Date} activitys.f_start_date <code>f_start_date</code> of activity
  * @apiSuccess {Time} activitys.f_start_time <code>f_start_time</code> of activity
  * @apiSuccess {Time} activitys.f_end_time <code>f_end_time</code> of activity
+ * @apiSuccess {Integer} activitys.f_user_choice <code>f_user_choice</code> of activity
  * @apiSuccess {Integer} limit Limit used to fetch data
  * @apiSuccess {Integer} offset Offset used to fetch data
  * @apiSuccess {Integer} totalCount The total count of records for activity
@@ -1496,6 +1497,7 @@
  * @apiSuccess {Date} activity.f_start_date <code>f_start_date</code> of activity
  * @apiSuccess {Time} activity.f_start_time <code>f_start_time</code> of activity
  * @apiSuccess {Time} activity.f_end_time <code>f_end_time</code> of activity
+ * @apiSuccess {Integer} activity.f_user_choice <code>f_user_choice</code> of activity
  * @apiError (Error 404) {Object} NotFound No activity with ID <code>id</code> found
  */
 
@@ -1527,6 +1529,7 @@
  * @apiParam (Body parameters) {Date} [f_start_date] <code>f_start_date</code> of activity
  * @apiParam (Body parameters) {Time} [f_start_time] <code>f_start_time</code> of activity
  * @apiParam (Body parameters) {Time} [f_end_time] <code>f_end_time</code> of activity
+ * @apiParam (Body parameters) {Integer} [f_user_choice] <code>f_user_choice</code> of activity
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_activity] <code>id</code> of entity entry to associate
  * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
@@ -1539,6 +1542,7 @@
  * @apiSuccess {Date} activity.f_start_date <code>f_start_date</code> of activity
  * @apiSuccess {Time} activity.f_start_time <code>f_start_time</code> of activity
  * @apiSuccess {Time} activity.f_end_time <code>f_end_time</code> of activity
+ * @apiSuccess {Integer} activity.f_user_choice <code>f_user_choice</code> of activity
  * @apiError (Error 500) {Object} ServerError An error occured when trying to create activity
  */
 
@@ -1556,6 +1560,7 @@
  * @apiParam (Body parameters) {Date} [f_start_date] New value of <code>f_start_date</code> for activity
  * @apiParam (Body parameters) {Time} [f_start_time] New value of <code>f_start_time</code> for activity
  * @apiParam (Body parameters) {Time} [f_end_time] New value of <code>f_end_time</code> for activity
+ * @apiParam (Body parameters) {Integer} [f_user_choice] New value of <code>f_user_choice</code> for activity
  * @apiParam (Body parameters) {Integer} [fk_id_organization_organization] <code>id</code> of entity organization to associate
  * @apiParam (Body parameters) {Integer} [fk_id_activity] <code>id</code> of entity entry to associate
  * @apiParam (Body parameters) {Integer} [fk_id_team_team] <code>id</code> of entity team to associate
@@ -1568,6 +1573,7 @@
  * @apiSuccess {Date} activity.f_start_date <code>f_start_date</code> of activity
  * @apiSuccess {Time} activity.f_start_time <code>f_start_time</code> of activity
  * @apiSuccess {Time} activity.f_end_time <code>f_end_time</code> of activity
+ * @apiSuccess {Integer} activity.f_user_choice <code>f_user_choice</code> of activity
  * @apiError (Error 404) {Object} NotFound No activity with ID <code>id</code> found
  * @apiError (Error 500) {Object} ServerError An error occured when trying to update activity
  */

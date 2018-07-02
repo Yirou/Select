@@ -925,6 +925,13 @@ define({ "api": [
             "optional": false,
             "field": "activity.f_end_time",
             "description": "<p><code>f_end_time</code> of activity</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "activity.f_user_choice",
+            "description": "<p><code>f_user_choice</code> of activity</p>"
           }
         ]
       }
@@ -1032,6 +1039,13 @@ define({ "api": [
             "optional": false,
             "field": "activitys.f_end_time",
             "description": "<p><code>f_end_time</code> of activity</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "activitys.f_user_choice",
+            "description": "<p><code>f_user_choice</code> of activity</p>"
           },
           {
             "group": "Success 200",
@@ -1153,6 +1167,13 @@ define({ "api": [
             "group": "Body parameters",
             "type": "Integer",
             "optional": true,
+            "field": "f_user_choice",
+            "description": "<p><code>f_user_choice</code> of activity</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
             "field": "fk_id_organization_organization",
             "description": "<p><code>id</code> of entity organization to associate</p>"
           },
@@ -1247,6 +1268,13 @@ define({ "api": [
             "optional": false,
             "field": "activity.f_end_time",
             "description": "<p><code>f_end_time</code> of activity</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "activity.f_user_choice",
+            "description": "<p><code>f_user_choice</code> of activity</p>"
           }
         ]
       }
@@ -1335,6 +1363,13 @@ define({ "api": [
             "optional": true,
             "field": "f_end_time",
             "description": "<p>New value of <code>f_end_time</code> for activity</p>"
+          },
+          {
+            "group": "Body parameters",
+            "type": "Integer",
+            "optional": true,
+            "field": "f_user_choice",
+            "description": "<p>New value of <code>f_user_choice</code> for activity</p>"
           },
           {
             "group": "Body parameters",
@@ -1434,6 +1469,13 @@ define({ "api": [
             "optional": false,
             "field": "activity.f_end_time",
             "description": "<p><code>f_end_time</code> of activity</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Integer",
+            "optional": false,
+            "field": "activity.f_user_choice",
+            "description": "<p><code>f_user_choice</code> of activity</p>"
           }
         ]
       }

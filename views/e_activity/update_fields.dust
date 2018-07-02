@@ -161,4 +161,15 @@
             </select>
         </div>
     </div>
+    <div data-field="f_user_choice" class="fieldLineHeight col-xs-12">
+        <div class="form-group">
+            <label for="f_user_choice" class="required">
+                {@__ key="entity.e_activity.f_user_choice"/}&nbsp;
+                {@inline_help field="f_user_choice"}
+                <i data-field="f_user_choice" class="inline-help fa fa-info-circle" style="color: #1085EE"></i>
+                {/inline_help}
+            </label>
+            <input class="form-control input" placeholder='{@__ key="entity.e_activity.f_user_choice" /}' name="f_user_choice" value="{f_user_choice}" type="number" max="2147483648" required="">
+        </div>
+    </div>
 </div>

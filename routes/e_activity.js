@@ -113,6 +113,7 @@ router.get('/:id/display', block_access.isLoggedIn, function (req, res) {
     var data = {};
     models.E_activity.findOne({where: {id: id, fk_id_team_team: req.session.passport.user.fk_id_team_team}, include: [{model: models.E_entry, as: 'r_entry'}]}).then(function (e_activity) {
         if (e_activity) {
+            data.e_activity = e_activity;
             data.activityItemsHTML = '<div class="row">';
             var i = 0;
             var j = 0;
@@ -140,14 +141,12 @@ router.get('/:id/display', block_access.isLoggedIn, function (req, res) {
                             data.activityItemsHTML += '</div><div class="row">';
                         }
                         if (j === e_activity.r_entry.length) {
-                            data.e_activity = e_activity;
                             data.activityItemsHTML += '</div>';
                             res.render('e_activity/display', data);
                         }
                     });
                 });
             } else {
-                data.e_activity = e_activity;
                 data.activityItemsHTML += '</div>';
                 res.render('e_activity/display', data);
             }

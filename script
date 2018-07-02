@@ -29,6 +29,8 @@ add field Frequence with type enum and values HOUR,DAY,WEEK,MONTH,YEAR
 add field Start date with type date
 add field Start time with type time
 add field End time with type time
+add field User choice with type number
+set field User choice required
 set field Name required
 set field Start date required
 set field Organization required

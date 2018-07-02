@@ -34,7 +34,11 @@
                 {@__ key="entity.e_activity.f_end_time"/}
             </th>
             <th data-field="r_team" data-col="r_team.f_name" data-type="string">
-                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_team.f_name"/}
+            </th>
+            <th data-field="f_user_choice" data-col="f_user_choice" data-type="integer">
+                {@__ key="entity.e_activity.f_user_choice"/}
             </th>
 
 
@@ -85,7 +89,11 @@
                 {@__ key="entity.e_activity.f_end_time"/}
             </th>
             <th data-field="r_team" data-col="r_team.f_name" data-type="string">
-                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;{@__ key="entity.e_team.f_name"/}
+                {@__ key="entity.e_activity.r_team"/}&nbsp;-&nbsp;
+                {@__ key="entity.e_team.f_name"/}
+            </th>
+            <th data-field="f_user_choice" data-col="f_user_choice" data-type="integer">
+                {@__ key="entity.e_activity.f_user_choice"/}
             </th>
 
 
@@ -117,6 +125,7 @@
             <td data-field="f_start_time" data-type="time">{f_start_time}</td>
             <td data-field="f_end_time" data-type="time">{f_end_time}</td>
             <td data-field="r_team" data-type="string">{r_team.f_name}</td>
+            <td data-field="f_user_choice" data-type="integer">{f_user_choice}</td>
 
             {@eq key=for value="fieldset"}
             {@actionAccess entity="activity" action="update"}
